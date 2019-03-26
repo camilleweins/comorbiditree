@@ -160,22 +160,6 @@ function RadarChart(id, data, options) {
 		.attr("d", function(d,i) { return radarLine(d); })
 		.style("fill", function(d,i) { return cfg.color(i); })
 		.style("fill-opacity", 0)
-		// .on('mouseover', function (d,i){
-		// 	//Dim all blobs
-		// 	d3.selectAll(".radarArea")
-		// 		.transition().duration(200)
-		// 		.style("fill-opacity", 0.1); 
-		// 	//Bring back the hovered over blob
-		// 	d3.select(this)
-		// 		.transition().duration(200)
-		// 		.style("fill-opacity", 0.7);	
-		// })
-		// .on('mouseout', function(){
-		// 	//Bring back all blobs
-		// 	d3.selectAll(".radarArea")
-		// 		.transition().duration(200)
-		// 		.style("fill-opacity", 0);
-		// });
 		
 	//Create the outlines	
 	blobWrapper.append("path")
@@ -251,7 +235,7 @@ function RadarChart(id, data, options) {
 			word,
 			line = [],
 			lineNumber = 0,
-			lineHeight = 2, // ems
+			lineHeight = 1.4, // ems
 			y = text.attr("y"),
 			x = text.attr("x"),
 			dy = parseFloat(text.attr("dy")),

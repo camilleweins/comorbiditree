@@ -103,8 +103,22 @@
 
 				RadarChart(".radarChart", data, radarChartOptions);
 
-				a1c.push(sugarValue);
+				//push sugar values into array on submission
+				a1c.push(parseInt(sugarValue));
 				console.log(a1c);
+
+
+				let total = 0;
+				for (let i = 0; i < a1c.length; i++) {
+					total += a1c[i];
+					//let average = (a1c.length-1)+(a1c[i]-(a1c.length-1)/a1c.length);
+				}
+				if (a1c.length > 1){
+					let average = total/a1c.length;
+					console.log(average);
+
+				}
+
 
 			}
 			
