@@ -59,7 +59,6 @@
 		<script>
 		// global variable puragtory
 		let sugar =document.getElementById('sugar');
-		let rpm = document.getElementById('rpm');
 		let exercise = document.getElementById('exercise');
 
 		// variables for the equations
@@ -101,21 +100,14 @@
 				let sugarValue = sugar.value;
 				let exerciseValue = exercise.value;
 
-				vein = Math.abs(sugarValue/1500 + exerciseValue/1500);
-				foot = Math.abs(sugarValue/1500 + exerciseValue/1500);
-				numb = Math.abs(sugarValue/1500 + exerciseValue/1500);
-				kidney = Math.abs(sugarValue/1500 + exerciseValue/1500);
-				heart = Math.abs(sugarValue/1500 + exerciseValue/1500);
+				vein = Math.abs((sugarValue*.19)/1000 - exerciseValue/1000);
+				foot = Math.abs((sugarValue*.15)/1000 - exerciseValue/1000);
+				numb = Math.abs((sugarValue*.5)/1000 - exerciseValue/1000);
+				kidney = Math.abs((sugarValue*.25)/1000 - exerciseValue/1000);
+				heart = Math.abs((sugarValue*.75)/1000 - exerciseValue/1000);
 
 				var data = [
-				  [//graph 1
-					{axis:"Vein Disease", value:0.2},
-					{axis:"Foot Ulcers",value:0.10},
-					{axis:"Numbness",value:0.10},
-					{axis:"Kidney Failure",value:0.22},
-					{axis:"Heart Disease",value:0.27},
-				  ],
-				  [//graph 2
+				  [//literally have to have the brackets or i.map issue
 					{axis:"Vein Disease",value:vein},
 					{axis:"Foot Ulcers",value:foot},
 					{axis:"Numbness",value:numb},

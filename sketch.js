@@ -85,8 +85,8 @@ function RadarChart(id, data, options) {
 		.append("circle")
 		.attr("class", "gridCircle")
 		.attr("r", function(d, i){return radius/cfg.levels*d;})
-		.style("fill", "#CDCDCD")
-		.style("stroke", "#CDCDCD")
+		.style("fill", "#FFFFFF")
+		.style("stroke", "#000000")
 		.style("fill-opacity", cfg.opacityCircles)
 		// .style("filter" , "url(#glow)");
 
@@ -98,8 +98,8 @@ function RadarChart(id, data, options) {
 	   .attr("x", 4)
 	   .attr("y", function(d){return -d*radius/cfg.levels;})
 	   .attr("dy", "0.4em")
-	   .style("font-size", "10px")
-	   .attr("fill", "#737373")
+	   .style("font-size", "14px")
+	   .attr("fill", "#000000")
 	   .text(function(d,i) { return Format(maxValue * d/cfg.levels); });
 
 	/////////////////////////////////////////////////////////
@@ -119,13 +119,13 @@ function RadarChart(id, data, options) {
 		.attr("x2", function(d, i){ return rScale(maxValue*1.1) * Math.cos(angleSlice*i - Math.PI/2); })
 		.attr("y2", function(d, i){ return rScale(maxValue*1.1) * Math.sin(angleSlice*i - Math.PI/2); })
 		.attr("class", "line")
-		.style("stroke", "white")
+		.style("stroke", "black")
 		.style("stroke-width", "2px");
 
 	//Append the labels at each axis
 	axis.append("text")
 		.attr("class", "legend")
-		.style("font-size", "11px")
+		.style("font-size", "18px")
 		.attr("text-anchor", "middle")
 		.attr("dy", "0.35em")
 		.attr("x", function(d, i){ return rScale(maxValue * cfg.labelFactor) * Math.cos(angleSlice*i - Math.PI/2); })
@@ -251,7 +251,7 @@ function RadarChart(id, data, options) {
 			word,
 			line = [],
 			lineNumber = 0,
-			lineHeight = 1.4, // ems
+			lineHeight = 2, // ems
 			y = text.attr("y"),
 			x = text.attr("x"),
 			dy = parseFloat(text.attr("dy")),
