@@ -35,11 +35,16 @@
 				fill: #333333;
 			}
 
-						.stats {
+			.stats {
 				text-align: left;
 			}
+
+			.a1c {
+				text-align: left;
+				padding-bottom: 20px;
+				padding-left: 40px;
+			}
 		</style>
-	
 	</head>
 	<body>
 		<div class="radarChart"></div>
@@ -58,7 +63,7 @@
 		
 <input type="submit" onclick="run()">
 
-		<script src="sketch.js"></script>	
+		<script src="graph.js"></script>	
 		<script>
 		// global variable puragtory
 		let sugar =document.getElementById('sugar');
@@ -86,11 +91,11 @@
 			let sugarValue = parseInt(sugar.value);
 			let exerciseValue = parseInt(exercise.value);
 
-			vein = Math.abs((sugarValue*.19)/1000 - exerciseValue/1000);
-			foot = Math.abs((sugarValue*.15)/1000 - exerciseValue/1000);
-			numb = Math.abs((sugarValue*.5)/1000 - exerciseValue/1000);
-			kidney = Math.abs((sugarValue*.25)/1000 - exerciseValue/1000);
-			heart = Math.abs((sugarValue*.75)/1000 - exerciseValue/1000);
+			vein = Math.abs((sugarValue*.19)/500 - exerciseValue/500);
+			foot = Math.abs((sugarValue*.15)/500 - exerciseValue/500);
+			numb = Math.abs((sugarValue*.5)/500 - exerciseValue/500);
+			kidney = Math.abs((sugarValue*.25)/500 - exerciseValue/500);
+			heart = Math.abs((sugarValue*.75)/500 - exerciseValue/500);
 
 			let data = [];
 
@@ -136,7 +141,9 @@
 			// only calculate average if there's more than one item in array
 			if (a1c.length > 1){
 				let average = total/a1c.length;
+				let a1cValue = (average + 46.7)/28.7;
 				console.log(average);
+				console.log(a1cValue);
 
 			}
 
@@ -149,7 +156,7 @@
 			////////////////////////////////////////////////////////////// 
 
 			var color = d3.scale.ordinal()
-				.range(["#EDC951","#CC333F","#00A0B0"]);
+				.range(["#EDC951","#CC333F","#00A0B0", "#7848c0"]);
 				
 			var radarChartOptions = {
 			  w: width,

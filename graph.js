@@ -88,7 +88,7 @@ function RadarChart(id, data, options) {
 		.style("fill", "#FFFFFF")
 		.style("stroke", "#000000")
 		.style("fill-opacity", cfg.opacityCircles)
-		// .style("filter" , "url(#glow)");
+		.style("filter" , "url(#glow)");
 
 	//Text indicating at what % each level is
 	axisGrid.selectAll(".axisLabel")
@@ -112,6 +112,7 @@ function RadarChart(id, data, options) {
 		.enter()
 		.append("g")
 		.attr("class", "axis");
+
 	//Append the lines
 	axis.append("line")
 		.attr("x1", 0)
