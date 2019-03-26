@@ -26,7 +26,6 @@
 				cursor: default;
 			}
 			
-
 			.legend {
 				font-family: 'Raleway', sans-serif;
 				fill: #333333;
@@ -68,59 +67,81 @@
 		// variables for the equations
       	let vein, foot, numb, kidney, heart;
 
+      	// initialize
+		let dataset = [];
       /* Radar chart design created by Nadieh Bremer - VisualCinnamon.com */
       
-			////////////////////////////////////////////////////////////// 
-			//////////////////////// Set-Up ////////////////////////////// 
-			////////////////////////////////////////////////////////////// 
+		////////////////////////////////////////////////////////////// 
+		//////////////////////// Set-Up ////////////////////////////// 
+		////////////////////////////////////////////////////////////// 
 
-			var margin = {top: 100, right: 100, bottom: 100, left: 100},
-				width = Math.min(700, window.innerWidth - 10) - margin.left - margin.right,
-				height = Math.min(width, window.innerHeight - margin.top - margin.bottom - 20);
-					
-				//array of sugar values
-				let a1c = [];
+		var margin = {top: 100, right: 100, bottom: 100, left: 100},
+			width = Math.min(700, window.innerWidth - 10) - margin.left - margin.right,
+			height = Math.min(width, window.innerHeight - margin.top - margin.bottom - 20);
+				
+			// array of sugar values
+			let a1c = [];
 
-			function run() {
-				let sugarValue = sugar.value;
-				let exerciseValue = exercise.value;
+		function run() {
+			let sugarValue = parseInt(sugar.value);
+			let exerciseValue = parseInt(exercise.value);
 
-				vein = Math.abs((sugarValue*.19)/1000 - exerciseValue/1000);
-				foot = Math.abs((sugarValue*.15)/1000 - exerciseValue/1000);
-				numb = Math.abs((sugarValue*.5)/1000 - exerciseValue/1000);
-				kidney = Math.abs((sugarValue*.25)/1000 - exerciseValue/1000);
-				heart = Math.abs((sugarValue*.75)/1000 - exerciseValue/1000);
+			vein = Math.abs((sugarValue*.19)/1000 - exerciseValue/1000);
+			foot = Math.abs((sugarValue*.15)/1000 - exerciseValue/1000);
+			numb = Math.abs((sugarValue*.5)/1000 - exerciseValue/1000);
+			kidney = Math.abs((sugarValue*.25)/1000 - exerciseValue/1000);
+			heart = Math.abs((sugarValue*.75)/1000 - exerciseValue/1000);
 
-				var data = [
-				  [//literally have to have the brackets or i.map issue
-					{axis:"Vein Disease",value:vein},
-					{axis:"Foot Ulcers",value:foot},
-					{axis:"Numbness",value:numb},
-					{axis:"Kidney Failure",value:kidney},
-					{axis:"Heart Disease",value:heart},
-				  ]
-				];
+			let data = [];
 
-				RadarChart(".radarChart", data, radarChartOptions);
+			data.push(
+				{axis:"Vein Disease",value:vein},
+				{axis:"Foot Ulcers",value:foot},
+				{axis:"Numbness",value:numb},
+				{axis:"Kidney Failure",value:kidney},
+				{axis:"Heart Disease",value:heart},
+			);
 
-				//push sugar values into array on submission
-				a1c.push(parseInt(sugarValue));
-				console.log(a1c);
+			console.log(data);
 
+			//make our collection of data
+			dataset.push(data);
 
-				let total = 0;
-				for (let i = 0; i < a1c.length; i++) {
-					total += a1c[i];
-					//let average = (a1c.length-1)+(a1c[i]-(a1c.length-1)/a1c.length);
-				}
-				if (a1c.length > 1){
-					let average = total/a1c.length;
-					console.log(average);
+			console.log(dataset);
 
-				}
+			// var data = [
+			//   [// literally have to have the brackets or i.map issue
+			// 	{axis:"Vein Disease",value:vein},
+			// 	{axis:"Foot Ulcers",value:foot},
+			// 	{axis:"Numbness",value:numb},
+			// 	{axis:"Kidney Failure",value:kidney},
+			// 	{axis:"Heart Disease",value:heart},
+			//   ]
+			// ];
 
+			// draw the chart
+			//we need to draw multiple charts though
+			RadarChart(".radarChart", dataset, radarChartOptions);
+
+			//push sugar values into array on submission
+			a1c.push(parseInt(sugarValue));
+			// console.log(a1c);
+
+			// an estimation of a1c value
+			let total = 0;
+			for (let i = 0; i < a1c.length; i++) {
+				total += a1c[i];
+			}
+
+			// only calculate average if there's more than one item in array
+			if (a1c.length > 1){
+				let average = total/a1c.length;
+				console.log(average);
 
 			}
+
+
+		}
 			
 
 			////////////////////////////////////////////////////////////// 
