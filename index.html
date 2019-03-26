@@ -44,6 +44,10 @@
 	</head>
 	<body>
 		<div class="radarChart"></div>
+		<div class="a1c">
+			<h3>Predicted a1c Value</h3>
+			<div class="a1c-value"></div>
+		</div>
 		<dir class="stats">
 			<label>Blood sugar</label>
 			<input type="text" name="sugar" id="sugar">
@@ -74,27 +78,8 @@
 				width = Math.min(700, window.innerWidth - 10) - margin.left - margin.right,
 				height = Math.min(width, window.innerHeight - margin.top - margin.bottom - 20);
 					
-			////////////////////////////////////////////////////////////// 
-			////////////////////////// Data ////////////////////////////// 
-			////////////////////////////////////////////////////////////// 
-
-
-				// var data = [
-				// 	  [//graph 1
-				// 		{axis:"Vein Disease",value:0.01},
-				// 		{axis:"Foot Ulcers",value:0.01},
-				// 		{axis:"Numbness",value:0.01},
-				// 		{axis:"Kidney Failure",value:0.01},
-				// 		{axis:"Heart Disease",value:0.01},
-				// 	  ],
-				// 	  [//graph 2
-				// 		{axis:"Vein Disease",value:0.51},
-				// 		{axis:"Foot Ulcers",value:0.21},
-				// 		{axis:"Numbness",value:0.31},
-				// 		{axis:"Kidney Failure",value:0.27},
-				// 		{axis:"Heart Disease",value:0.45},
-				// 	  ]
-				// 	];
+				//array of sugar values
+				let a1c = [];
 
 			function run() {
 				let sugarValue = sugar.value;
@@ -117,6 +102,9 @@
 				];
 
 				RadarChart(".radarChart", data, radarChartOptions);
+
+				a1c.push(sugarValue);
+				console.log(a1c);
 
 			}
 			
