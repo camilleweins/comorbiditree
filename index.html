@@ -50,7 +50,7 @@
 		<div class="radarChart"></div>
 		<div class="a1c">
 			<h3>Predicted a1c Value</h3>
-			<div class="a1c-value"></div>
+			<div id="a1c-value"></div>
 		</div>
 		<dir class="stats">
 			<label>Blood sugar</label>
@@ -143,6 +143,11 @@
 				let average = total/a1c.length;
 				let a1cValue = (average + 46.7)/28.7;
 				console.log(average);
+
+				// output value to the div
+				let a1cContainer = document.getElementById("a1c-value");
+				a1cContainer.innerHTML = a1cValue;
+
 				console.log(a1cValue);
 
 			}
