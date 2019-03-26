@@ -48,9 +48,6 @@
 			<label>Blood sugar</label>
 			<input type="text" name="sugar" id="sugar">
 			<br>
-			<label>Resting Heart Rate</label>
-			<input type="text" name="rpm" id="rpm">
-			<br>
 			<label>Exercise duration(mins)</label>
 			<input type="text" name="exercise" id="exercise">
 			<br>
@@ -102,14 +99,13 @@
 
 			function run() {
 				let sugarValue = sugar.value;
-				// let rpmValue = rpm.value;
 				let exerciseValue = exercise.value;
 
-				vein = Math.abs(sugarValue/1500 + rpmValue/1500 + exerciseValue/1500);
-				foot = Math.abs(sugarValue/1500 + rpmValue/1500 + exerciseValue/1500);
-				numb = Math.abs(sugarValue/1500 + rpmValue/1500 + exerciseValue/1500);
-				kidney = Math.abs(sugarValue/1500 + rpmValue/1500 + exerciseValue/1500);
-				heart = Math.abs(sugarValue/1500 + rpmValue/1500 + exerciseValue/1500);
+				vein = Math.abs(sugarValue/1500 + exerciseValue/1500);
+				foot = Math.abs(sugarValue/1500 + exerciseValue/1500);
+				numb = Math.abs(sugarValue/1500 + exerciseValue/1500);
+				kidney = Math.abs(sugarValue/1500 + exerciseValue/1500);
+				heart = Math.abs(sugarValue/1500 + exerciseValue/1500);
 
 				var data = [
 				  [//graph 1
