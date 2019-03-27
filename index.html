@@ -11,40 +11,8 @@
 		<!-- Google fonts -->
 		<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300' rel='stylesheet' type='text/css'>
 		<link href='https://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
-
 		<!-- D3.js -->
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js" charset="utf-8"></script>
-		
-		<style>
-			body {
-				font-family: 'Open Sans', sans-serif;
-				font-size: 11px;
-				font-weight: 300;
-				fill: #242424;
-				text-align: center;
-				text-shadow: 0 1px 0 #fff, 1px 0 0 #fff, -1px 0 0 #fff, 0 -1px 0 #fff;
-				cursor: default;
-			}
-			
-			.legend {
-				font-family: 'Raleway', sans-serif;
-				fill: #333333;
-			}
-			
-			.tooltip {
-				fill: #333333;
-			}
-
-			.stats {
-				text-align: left;
-			}
-
-			.a1c {
-				text-align: left;
-				padding-bottom: 20px;
-				padding-left: 40px;
-			}
-		</style>
 	</head>
 	<body>
 		<div class="radarChart"></div>
@@ -115,23 +83,12 @@
 
 			console.log(dataset);
 
-			// var data = [
-			//   [// literally have to have the brackets or i.map issue
-			// 	{axis:"Vein Disease",value:vein},
-			// 	{axis:"Foot Ulcers",value:foot},
-			// 	{axis:"Numbness",value:numb},
-			// 	{axis:"Kidney Failure",value:kidney},
-			// 	{axis:"Heart Disease",value:heart},
-			//   ]
-			// ];
-
 			// draw the chart
 			//we need to draw multiple charts though
 			RadarChart(".radarChart", dataset, radarChartOptions);
 
 			//push sugar values into array on submission
 			a1c.push(parseInt(sugarValue));
-			// console.log(a1c);
 
 			// an estimation of a1c value
 			let total = 0;
@@ -152,10 +109,7 @@
 				console.log(a1cValue);
 
 			}
-
-
 		}
-			
 
 			////////////////////////////////////////////////////////////// 
 			//////////////////// Draw the Chart ////////////////////////// 
