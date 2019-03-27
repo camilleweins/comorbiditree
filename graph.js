@@ -11,7 +11,7 @@ function RadarChart(id, data, options) {
 	 w: 600,				//Width of the circle
 	 h: 600,				//Height of the circle
 	 margin: {top: 20, right: 20, bottom: 20, left: 20}, //The margins of the SVG
-	 levels: 3,				//How many levels or inner circles should there be drawn
+	 levels: 0,				//How many levels or inner circles should there be drawn
 	 maxValue: 0, 			//What is the value that the biggest circle will represent
 	 labelFactor: 1.25, 	//How much farther than the radius of the outer circle should the labels be placed
 	 wrapWidth: 60, 		//The number of pixels after which a label needs to be given a new line
@@ -65,11 +65,11 @@ function RadarChart(id, data, options) {
 	/////////////////////////////////////////////////////////
 	
 	//Filter for the outside glow
-	var filter = g.append('defs').append('filter').attr('id','glow'),
-		feGaussianBlur = filter.append('feGaussianBlur').attr('stdDeviation','2.5').attr('result','coloredBlur'),
-		feMerge = filter.append('feMerge'),
-		feMergeNode_1 = feMerge.append('feMergeNode').attr('in','coloredBlur'),
-		feMergeNode_2 = feMerge.append('feMergeNode').attr('in','SourceGraphic');
+	// var filter = g.append('defs').append('filter').attr('id','glow'),
+	// 	feGaussianBlur = filter.append('feGaussianBlur').attr('stdDeviation','2.5').attr('result','coloredBlur'),
+	// 	feMerge = filter.append('feMerge'),
+	// 	feMergeNode_1 = feMerge.append('feMergeNode').attr('in','coloredBlur'),
+	// 	feMergeNode_2 = feMerge.append('feMergeNode').attr('in','SourceGraphic');
 
 	/////////////////////////////////////////////////////////
 	/////////////// Draw the Circular grid //////////////////
@@ -84,23 +84,11 @@ function RadarChart(id, data, options) {
 	   .enter()
 		.append("circle")
 		.attr("class", "gridCircle")
-		.attr("r", function(d, i){return radius/cfg.levels*d;})
+		.attr("r", function(d, i){return radius/d;})
 		.style("fill", "#FFFFFF")
 		.style("stroke", "#000000")
 		.style("fill-opacity", cfg.opacityCircles)
-		.style("filter" , "url(#glow)");
-
-	//Text indicating at what % each level is
-	axisGrid.selectAll(".axisLabel")
-	   .data(d3.range(1,(cfg.levels+1)).reverse())
-	   .enter().append("text")
-	   .attr("class", "axisLabel")
-	   .attr("x", 4)
-	   .attr("y", function(d){return -d*radius/cfg.levels;})
-	   .attr("dy", "0.4em")
-	   .style("font-size", "14px")
-	   .attr("fill", "#000000")
-	   .text(function(d,i) { return Format(maxValue * d/cfg.levels); });
+		//.style("filter" , "url(#glow)");
 
 	/////////////////////////////////////////////////////////
 	//////////////////// Draw the axes //////////////////////
@@ -169,7 +157,7 @@ function RadarChart(id, data, options) {
 		.style("stroke-width", cfg.strokeWidth + "px")
 		.style("stroke", function(d,i) { return cfg.color(i); })
 		.style("fill", "none")
-		.style("filter" , "url(#glow)");		
+		// .style("filter" , "url(#glow)");		
 	
 	//Append the circles
 	blobWrapper.selectAll(".radarCircle")
