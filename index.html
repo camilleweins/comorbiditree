@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
     <title>The Comorbiditree</title>
     <script src="p5.min.js"></script>
     <script src="p5.dom.min.js"></script>
@@ -25,15 +25,19 @@
         <input type="text" name="weight" id="weight">
         <br>
     </div>
+
     <div class="blood-volume">
         <h3>Estimated Blood Volume</h3>
         <div id="blood-volume-value"></div>
     </div>
+
     <div class="radarChart"></div>
+
     <div class="a1c">
         <h3>Predicted a1c Value</h3>
         <div id="a1c-value"></div>
     </div>
+
     <div class="stats">
         <label>Blood sugar(mg/dL)</label>
         <input type="text" name="sugar" id="sugar">
@@ -42,8 +46,10 @@
         <input type="text" name="exercise" id="exercise">
         <br>
     </div>
+
     <input type="submit" onclick="run()">
     <script src="graph.js"></script>
+
     <script>
     // global variable puragtory
     let sugar = document.getElementById('sugar');
@@ -67,6 +73,8 @@
     // array of sugar values
     let a1c = [];
 
+    //let particles = [];
+
     function run() {
         let sugarValue = parseInt(sugar.value);
         let exerciseValue = parseInt(exercise.value);
@@ -80,7 +88,13 @@
 
         let data = [];
 
-        data.push({ axis: "Vein Disease", value: vein }, { axis: "Foot Ulcers", value: foot }, { axis: "Numbness", value: numb }, { axis: "Kidney Failure", value: kidney }, { axis: "Heart Disease", value: heart }, );
+        data.push(
+            {axis:"Vein Disease",value:vein},
+            {axis:"Foot Ulcers",value:foot},
+            {axis:"Numbness",value:numb},
+            {axis:"Kidney Failure",value:kidney},
+            {axis:"Heart Disease",value:heart},
+        );
 
         console.log(data);
 
@@ -88,10 +102,10 @@
         dataset.push(data);
 
         console.log(dataset);
-
         // draw the chart
         //we need to draw multiple charts though
         RadarChart(".radarChart", dataset, radarChartOptions);
+
 
         //push sugar values into array on submission
         a1c.push(parseInt(sugarValue));
@@ -119,47 +133,40 @@
         let calcHeight = document.getElementById('height');
         let calcWeight = document.getElementById('weight');
 
-        let heightValue = parseInt(calcHeight.value)/39.37;
-        let weightValue = parseInt(calcWeight.value)/2.205;
+        let heightValue = parseInt(calcHeight.value) / 39.37;
+        let weightValue = parseInt(calcWeight.value) / 2.205;
 
         //only use the female equation because mother
         //convert to US
         //let bV = ((0.3561*(heightValue/39.37)^3)+(0.03308*(weightValue/2.205) + 0.1833));
-        let bV = ((0.3561* Math.pow(heightValue, 3))+(0.03308*(weightValue) + 0.1833));
+        let bV = ((0.3561 * Math.pow(heightValue, 3)) + (0.03308 * (weightValue) + 0.1833));
 
 
         console.log(bV);
 
         let bVContainer = document.getElementById("blood-volume-value");
         bVContainer.innerHTML = '~' + Math.round(bV) + ' L';
-
-        // we'll draw a container that represents you bv
-        //fill it with particles
-        //adjust the color
-
-        //milligrams per decilitre
-        //times the deciliter volume value by .10
-
     }
 
-    ////////////////////////////////////////////////////////////// 
-    //////////////////// Draw the Chart ////////////////////////// 
-    ////////////////////////////////////////////////////////////// 
 
-    let color = d3.scale.ordinal()
-        .range(["#ff6600", "#CC333F", "#00A0B0", "#7848c0"]);
+        // ////////////////////////////////////////////////////////////// 
+        // //////////////////// Draw the Chart ////////////////////////// 
+        // ////////////////////////////////////////////////////////////// 
 
-    let radarChartOptions = {
-        w: width,
-        h: height,
-        margin: margin,
-        maxValue: 1,
-        levels: 10,
-        roundStrokes: true,
-        color: color
-    };
-    //Call function to draw the Radar chart
-    // RadarChart(".radarChart", data, radarChartOptions);
+        let color = d3.scale.ordinal()
+            .range(["#ff6600", "#CC333F", "#00A0B0", "#7848c0"]);
+
+        let radarChartOptions = {
+            w: width,
+            h: height,
+            margin: margin,
+            maxValue: 1,
+            levels: 10,
+            roundStrokes: true,
+            color: color
+        };
+
+    
     </script>
 </body>
 
