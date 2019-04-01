@@ -60,7 +60,7 @@
     //////////////////////// Set-Up ////////////////////////////// 
     ////////////////////////////////////////////////////////////// 
 
-    var margin = { top: 100, right: 100, bottom: 100, left: 100 },
+    let margin = { top: 100, right: 100, bottom: 100, left: 100 },
         width = Math.min(700, window.innerWidth - 10) - margin.left - margin.right,
         height = Math.min(width, window.innerHeight - margin.top - margin.bottom - 20);
 
@@ -146,10 +146,10 @@
     //////////////////// Draw the Chart ////////////////////////// 
     ////////////////////////////////////////////////////////////// 
 
-    var color = d3.scale.ordinal()
+    let color = d3.scale.ordinal()
         .range(["#ff6600", "#CC333F", "#00A0B0", "#7848c0"]);
 
-    var radarChartOptions = {
+    let radarChartOptions = {
         w: width,
         h: height,
         margin: margin,
