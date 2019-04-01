@@ -47,7 +47,7 @@
         <br>
     </div>
 
-    <input type="submit" onclick="mousePressed()">
+    <input type="submit" onclick="run()" id="button">
     <script src="graph.js"></script>
 
     <script>
@@ -73,9 +73,9 @@
     // array of sugar values
     let a1c = [];
 
-    //let particles = [];
+    let particles = [];
 
-    function mousePressed() {
+    function run() {
         let sugarValue = parseInt(sugar.value);
         let exerciseValue = parseInt(exercise.value);
         let scaler = 250;
@@ -146,7 +146,7 @@
 
         let bVContainer = document.getElementById("blood-volume-value");
         bVContainer.innerHTML = '~' + Math.round(bV) + ' L';
-    
+
     }
 
 
@@ -226,7 +226,55 @@
  
     // }
 
+    function setup() {
+        //let bloodConversion = parseInt(sugar.value)*10;
 
+        createCanvas(600, 600);
+        // for (let i = 0; i < bloodConversion; i++) {
+        //     particles.push(new glucose());
+        // }
+        button();
+    }
+
+    class glucose{
+      constructor(){
+        this.x = random((width-1));
+        this.y = random((height-1));
+        this.speed = 1;
+      }
+      
+      move() {
+        this.x+=random(-this.speed, this.speed);
+        this.y+= random (-this.speed, this.speed);
+      }
+      
+      render() {
+        fill('#fcebe1');
+        noStroke();
+        ellipse(this.x, this.y, 2);
+      }
+    }
+
+    function draw() {
+      background('#be2b00');
+      for (let i=0; i<particles.length; i++) {
+        particles[i].move();
+        particles[i].render();
+        
+      }  
+    }
+
+    function button() {
+        let run = select('#button');
+        run.mousePressed(function() {
+            //the button listener
+            let bloodConversion = parseInt(sugar.value)*10;
+
+            for (let i = 0; i < bloodConversion; i++) {
+                particles.push(new glucose());
+            }
+        })
+    }
 
     // ////////////////////////////////////////////////////////////// 
     // //////////////////// Draw the Chart ////////////////////////// 
