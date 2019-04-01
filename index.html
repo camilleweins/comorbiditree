@@ -47,7 +47,7 @@
         <br>
     </div>
 
-    <input type="submit" onclick="run()">
+    <input type="submit" onclick="mousePressed()">
     <script src="graph.js"></script>
 
     <script>
@@ -75,7 +75,7 @@
 
     //let particles = [];
 
-    function run() {
+    function mousePressed() {
         let sugarValue = parseInt(sugar.value);
         let exerciseValue = parseInt(exercise.value);
         let scaler = 250;
@@ -146,25 +146,104 @@
 
         let bVContainer = document.getElementById("blood-volume-value");
         bVContainer.innerHTML = '~' + Math.round(bV) + ' L';
+    
     }
 
 
-        // ////////////////////////////////////////////////////////////// 
-        // //////////////////// Draw the Chart ////////////////////////// 
-        // ////////////////////////////////////////////////////////////// 
+    // function run() {
+    //     let sugarValue = parseInt(sugar.value);
+    //     let exerciseValue = parseInt(exercise.value);
+    //     let scaler = 250;
 
-        let color = d3.scale.ordinal()
-            .range(["#ff6600", "#CC333F", "#00A0B0", "#7848c0"]);
+    //     vein = Math.abs((sugarValue * .19) / scaler - exerciseValue / scaler);
+    //     foot = Math.abs((sugarValue * .15) / scaler - exerciseValue / scaler);
+    //     numb = Math.abs((sugarValue * .5) / scaler - exerciseValue / scaler);
+    //     kidney = Math.abs((sugarValue * .25) / scaler - exerciseValue / scaler);
+    //     heart = Math.abs((sugarValue * .75) / scaler - exerciseValue / scaler);
 
-        let radarChartOptions = {
-            w: width,
-            h: height,
-            margin: margin,
-            maxValue: 1,
-            levels: 10,
-            roundStrokes: true,
-            color: color
-        };
+    //     let data = [];
+
+    //     data.push(
+    //         {axis:"Vein Disease",value:vein},
+    //         {axis:"Foot Ulcers",value:foot},
+    //         {axis:"Numbness",value:numb},
+    //         {axis:"Kidney Failure",value:kidney},
+    //         {axis:"Heart Disease",value:heart},
+    //     );
+
+    //     console.log(data);
+
+    //     //make our collection of data
+    //     dataset.push(data);
+
+    //     console.log(dataset);
+    //     // draw the chart
+    //     //we need to draw multiple charts though
+    //     RadarChart(".radarChart", dataset, radarChartOptions);
+
+
+    //     //push sugar values into array on submission
+    //     a1c.push(parseInt(sugarValue));
+
+    //     // an estimation of a1c value
+    //     let total = 0;
+    //     for (let i = 0; i < a1c.length; i++) {
+    //         total += a1c[i];
+    //     }
+
+    //     // only calculate average if there's more than one item in array
+    //     if (a1c.length > 1) {
+    //         let average = total / a1c.length;
+    //         let a1cValue = (average + 46.7) / 28.7;
+    //         console.log(average);
+
+    //         // output value to the div
+    //         let a1cContainer = document.getElementById("a1c-value");
+    //         a1cContainer.innerHTML = a1cValue;
+
+    //         console.log(a1cValue);
+
+    //     }
+
+    //     let calcHeight = document.getElementById('height');
+    //     let calcWeight = document.getElementById('weight');
+
+    //     let heightValue = parseInt(calcHeight.value) / 39.37;
+    //     let weightValue = parseInt(calcWeight.value) / 2.205;
+
+    //     //only use the female equation because mother
+    //     //convert to US
+    //     //let bV = ((0.3561*(heightValue/39.37)^3)+(0.03308*(weightValue/2.205) + 0.1833));
+    //     let bV = ((0.3561 * Math.pow(heightValue, 3)) + (0.03308 * (weightValue) + 0.1833));
+
+
+    //     console.log(bV);
+
+    //     let bVContainer = document.getElementById("blood-volume-value");
+    //     bVContainer.innerHTML = '~' + Math.round(bV) + ' L';
+
+
+ 
+    // }
+
+
+
+    // ////////////////////////////////////////////////////////////// 
+    // //////////////////// Draw the Chart ////////////////////////// 
+    // ////////////////////////////////////////////////////////////// 
+
+    let color = d3.scale.ordinal()
+        .range(["#ff6600", "#CC333F", "#00A0B0", "#7848c0"]);
+
+    let radarChartOptions = {
+        w: width,
+        h: height,
+        margin: margin,
+        maxValue: 1,
+        levels: 10,
+        roundStrokes: true,
+        color: color
+    };
 
     
     </script>
