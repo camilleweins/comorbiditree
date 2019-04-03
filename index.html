@@ -17,14 +17,7 @@
 </head>
 
 <body>
-    <div class="blood-volume-stats">
-        <label>Height(in.)</label>
-        <input type="text" name="height" id="height">
-        <br>
-        <label>Weight(lbs)</label>
-        <input type="text" name="weight" id="weight">
-        <br>
-    </div>
+
 
     <div class="blood-volume">
         <h3>Estimated Blood Volume</h3>
@@ -130,11 +123,15 @@
 
         }
 
-        let calcHeight = document.getElementById('height');
-        let calcWeight = document.getElementById('weight');
+        // let calcHeight = document.getElementById('height');
+        // let calcWeight = document.getElementById('weight');
 
-        let heightValue = parseInt(calcHeight.value) / 39.37;
-        let weightValue = parseInt(calcWeight.value) / 2.205;
+        // let heightValue = parseInt(calcHeight.value) / 39.37;
+        // let weightValue = parseInt(calcWeight.value) / 2.205;
+
+        let heightValue = 65 / 39.37;
+                let weightValue = 135 / 2.205;
+
 
         //only use the female equation because mother
         //convert to US
@@ -233,6 +230,8 @@
         // for (let i = 0; i < bloodConversion; i++) {
         //     particles.push(new glucose());
         // }
+        // hide canvas until we have data
+        select('canvas').hide();
         button();
     }
 
@@ -260,8 +259,8 @@
       for (let i=0; i<particles.length; i++) {
         particles[i].move();
         particles[i].render();
-        
       }  
+
     }
 
     function button() {
@@ -269,10 +268,13 @@
         run.mousePressed(function() {
             //the button listener
             let bloodConversion = parseInt(sugar.value)*10;
+            let bloodValue = sugar.value;
 
             for (let i = 0; i < bloodConversion; i++) {
                 particles.push(new glucose());
             }
+       // display on button press
+        select('canvas').show();
         })
     }
 
