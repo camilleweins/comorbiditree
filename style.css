@@ -32,9 +32,15 @@ html, body {
 	padding-left: 40px;
 }
 
+.radarChart {
+	padding-top: 700px;
+
+}
+
 canvas {
 	padding-top: 20px;
-  display: block;
+ 	display: flex;
+
 }
 
 /**/

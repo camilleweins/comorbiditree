@@ -1,6 +1,6 @@
 // load modules
-// var express = require('express');
-// var hbs = require('express-handlebars');
+const express = require('express');
+const hbs = require('express-handlebars');
 //var cookieParser = require('cookie-parser');
 const session = require('cookie-session');
 // var MongoStore = require('connect-mongo')(session); //needs to know about the session
@@ -15,45 +15,29 @@ const bodyParser = require('body-parser');
 require('dotenv').config();
 
 // create app
-// var app = express();
+const app = express();
 
 var PORT = process.env.PORT || 8081;
 
-//pass a secret
-//app.use(cookieParser(process.env.cookieSecret));
-
 // init handlebars
-// app.engine('handlebars', hbs({defaultLayout: 'main'}));
-// app.set('view engine', 'handlebars');
+app.engine('handlebars', hbs({defaultLayout: 'main'}));
+app.set('view engine', 'handlebars');
 
-//setup cookie parser and body parser middleware before routes that need them
-
-// app.use(cookieParser({
-// 	secret: process.env.cookieSecret
-// }));
+//setup body parser middleware before routes that need them
 
 //gets value of form fields from req.body 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false}));
 
-
-mongoose.connect(process.env.DB_URL);
-
-var options = {};
-
-
 app.use(session({
 	secret: process.env.cookieSecret,
-	cookie: {
-		httpOnly: true,
-		maxAge: 1000 * 60 * 60 * 24 * 7 //one day
-	},
+
+	secure: true,
+	maxAge: 1000 * 60 * 60 * 24 * 7, //one day
+
 	resave: true, //keep only if you want to keep last visit
 	saveUninitialized: true, //for every site visitor
-	store: new MongoStore({
-		url: process.env.DB_URL,
-		update: MongoStore.update
-	})
+	
 }));
 
 //attach req.session.flash to res.locals (local variable)
@@ -127,48 +111,17 @@ app.post('/profile/add', function(req, res) {
 
 });
 
-// app.post('/treat', function(req, res) {
-// 	console.log(req.session.treat);
-// 	//console.log(req.session);
-// 	// var treat = new Treat ({
-// 	// 	treat: req.body.treat
-// 	// });
-// 	// console.log(res.cookie(req.session.value));
-// 	//var treat = ['candy corn', 'caramel apple', 'lolipop', 'skittles', 'kit-kat', 'gummy worms', 'jawbreakers', 'gum'];
-// 	req.session.treat = treat[Math.floor(Math.random() * treat.length)];
+// app.get('/clear', function(req, res) {
+// 	// res.clearCookie('treat');
+// 	delete req.session.treat;
 // 	req.session.flash = {
-// 		type: 'positive', 
-// 		header: 'You got a treat (check your profile)',
-// 		body: 'The treat is ' + req.session.treat
+// 		type: 'negative', 
+// 		header: 'No treat',
+// 		body: 'The bag is empty'
 // 	};
-
-// 	// cookie('treat', 'candy corn', {
-// 	// 	httpOnly: true,
-// 	// 	signed: true
-// 	// });
+// 	//delete req.cookies.treat;
 // 	res.redirect('/');
 // });
-
-// app.post('/profile/add', function(req, res) {
-// 	req.session.treats = 'red';
-// 	req.session.flash = {
-// 		type: 'positive', 
-// 		header: 'You got a new treat (check your profile)',
-// 		body: 'The treats are ' + req.session.treats
-// 	};
-// });
-
-app.get('/clear', function(req, res) {
-	// res.clearCookie('treat');
-	delete req.session.treat;
-	req.session.flash = {
-		type: 'negative', 
-		header: 'No treat',
-		body: 'The bag is empty'
-	};
-	//delete req.cookies.treat;
-	res.redirect('/');
-});
 
 
 
