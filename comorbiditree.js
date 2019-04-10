@@ -7,12 +7,11 @@
 
     // initialize
     let dataset = [];
-
-    let storageValues;
+    let storageArray;
     let storage;
     let retrievedStorage;
-    /* Radar chart design created by Nadieh Bremer - VisualCinnamon.com */
 
+    /* Radar chart design created by Nadieh Bremer - VisualCinnamon.com */
     ////////////////////////////////////////////////////////////// 
     //////////////////////// Set-Up ////////////////////////////// 
     ////////////////////////////////////////////////////////////// 
@@ -34,7 +33,7 @@
         //values needs to be a list i think
 
         //checks if localStorage already exists
-        storageValues = localStorage.getItem('storage') ? JSON.parse(localStorage.getItem('storage')) : [];
+        storageArray = localStorage.getItem('storage') ? JSON.parse(localStorage.getItem('storage')) : [];
 
         storage = {
             'sugarValue': sugarValue,
@@ -180,8 +179,8 @@
         //on submit we'll store in this array
         storageValues.push(storage);
 
-        localStorage.setItem('storage', JSON.stringify(storageValues)); 
-        console.log('storage: ', JSON.stringify(storageValues));
+        localStorage.setItem('storage', JSON.stringify(storageArray)); 
+        console.log('storage: ', JSON.stringify(storageArray));
 
     }
 
@@ -190,6 +189,7 @@
         // retrieve from localStorage
         //checks if localStorage already exists
         localStorage.getItem('storage') ? JSON.parse(localStorage.getItem('storage')) : [];
+        
         //     let retrievedStorage = JSON.parse(localStorage.getItem('storage'));
 
         // } else {
