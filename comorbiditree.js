@@ -225,7 +225,9 @@ var cnv = createCanvas(windowWidth/2, windowHeight);
                 
                 summary.style.display = 'block';
                 showGraph.style.display = 'block';
-
+                
+               // display onload from current data
+                select('#sketch').show();
 
             } else {
                 retrievedStorage = [];
