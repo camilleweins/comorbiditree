@@ -26,7 +26,7 @@
             <h1>Please enter your data.</h1>
 
         <div class="fields">
-                    <label>Blood sugar(mg/dL)</label>
+        <label>Blood sugar(mg/dL)</label>
         <input type="text" name="sugar" id="sugar">
         <br>
         <label>Exercise duration(mins)</label>
@@ -35,19 +35,19 @@
         <br>
         <input type="submit" onclick="run()" id="button">
         </div>
-
-
-
     </div>
+
     <div id="summary-container" style="display: none;">
-        <div>
-            <h1>Your Summary</h1>
+        <div id="summary-content">
+            <h1 id="summary-header">Your Summary</h1>
+            <br>
+            <hr>
             <ul>
                 <li>
                     <span>
                         <h3>Your risks are <span></span></h3>
 
-                        <img src="img/heart.svg">
+                        <img src="img/heart.svg" style="width: 3%;">
                         <caption>Heart by Laymik from the Noun Project</caption>
                     </span>
 
@@ -96,6 +96,7 @@
             
             </ul>
         </div>
+        <div id="sketch"></div>
     </div>
 
     <div class="radarChart" style="display: none;"></div>

@@ -73,48 +73,52 @@ vein = Math.abs((sugarValue * .19) / scaler - exerciseValue / scaler);
         // RadarChart(".radarChart", dataset, radarChartOptions);
 
         //push sugar values into array on submission
-        a1c.push(parseInt(sugarValue));
+        // a1c.push(parseInt(sugarValue));
 
-        // an estimation of a1c value
-        let total = 0;
-        for (let i = 0; i < a1c.length; i++) {
-            total += a1c[i];
-        }
+        // // an estimation of a1c value
+        // let total = 0;
+        // for (let i = 0; i < a1c.length; i++) {
+        //     total += a1c[i];
+        // }
 
-        // only calculate average if there's more than one item in array
-        if (a1c.length > 1) {
-            let average = total / a1c.length;
-            let a1cValue = (average + 46.7) / 28.7;
-            console.log(average);
+        // // only calculate average if there's more than one item in array
+        // if (a1c.length > 1) {
+        //     let average = total / a1c.length;
+        //     let a1cValue = (average + 46.7) / 28.7;
+        //     console.log(average);
 
-            // output value to the div
-            let a1cContainer = document.getElementById("a1c-value");
-            a1cContainer.innerHTML = a1cValue;
+        //     // output value to the div
+        //     let a1cContainer = document.getElementById("a1c-value");
+        //     a1cContainer.innerHTML = a1cValue;
 
-            console.log(a1cValue);
+        //     console.log(a1cValue);
 
-        }
+        // }
 
-        let heightValue = 65 / 39.37;
-        let weightValue = 135 / 2.205;
+        // let heightValue = 65 / 39.37;
+        // let weightValue = 135 / 2.205;
 
-        //only use the female Nadler's equation
-        //convert to US
-        let bV = ((0.3561 * Math.pow(heightValue, 3)) + (0.03308 * (weightValue) + 0.1833));
+        // //only use the female Nadler's equation
+        // //convert to US
+        // let bV = ((0.3561 * Math.pow(heightValue, 3)) + (0.03308 * (weightValue) + 0.1833));
 
-        console.log(bV);
+        // console.log(bV);
 
-        let bVContainer = document.getElementById("blood-volume-value");
-        bVContainer.innerHTML = '~' + Math.round(bV) + ' L';
+        // let bVContainer = document.getElementById("blood-volume-value");
+        // bVContainer.innerHTML = '~' + Math.round(bV) + ' L';
     }
 
     function setup() {
         //let bloodConversion = parseInt(sugar.value)*10;
-
-        createCanvas(windowWidth, windowHeight);
+var cnv = createCanvas(windowWidth/2, windowHeight);
+  //var x = (windowWidth - width) / 2;
+  //var y = (windowHeight - height) / 2;
+  cnv.position(0, windowHeight);
+        // createCanvas(windowWidth, windowHeight);
+    cnv.parent('sketch');
 
         // hide canvas until we have data
-        select('canvas').hide();
+        select('#sketch').hide();
         button();
     }
 
@@ -165,7 +169,7 @@ vein = Math.abs((sugarValue * .19) / scaler - exerciseValue / scaler);
                 particles.push(new glucose());
             }
        // display on button press
-        select('canvas').show();
+        select('#sketch').show();
         })
     }
 
