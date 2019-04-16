@@ -1,6 +1,7 @@
     // global variable puragtory
     let sugar = document.getElementById('sugar');
     let exercise = document.getElementById('exercise');
+    let summary = document.getElementById('summary-container');
 
     // variables for the equations
     let vein, foot, numb, kidney, heart;
@@ -10,6 +11,7 @@
     let storageArray;
     let storage;
     let retrievedStorage;
+    let scaler = 0.01;
 
     /* Radar chart design created by Nadieh Bremer - VisualCinnamon.com */
     ////////////////////////////////////////////////////////////// 
@@ -28,7 +30,6 @@
     function run() {
         let sugarValue = parseInt(sugar.value);
         let exerciseValue = parseInt(exercise.value);
-        let scaler = 350;
 
         //values needs to be a list i think
 
@@ -41,10 +42,11 @@
             'dateCaptured': Date.now()
         };
 
+
         storeValues();
         retrieveValues();
 
-        vein = Math.abs((sugarValue * .19) / scaler - exerciseValue / scaler);
+vein = Math.abs((sugarValue * .19) / scaler - exerciseValue / scaler);
         foot = Math.abs((sugarValue * .15) / scaler - exerciseValue / scaler);
         numb = Math.abs((sugarValue * .5) / scaler - exerciseValue / scaler);
         kidney = Math.abs((sugarValue * .25) / scaler - exerciseValue / scaler);
@@ -68,7 +70,7 @@
         console.log(dataset);
 
         // draw the chart
-        RadarChart(".radarChart", dataset, radarChartOptions);
+        // RadarChart(".radarChart", dataset, radarChartOptions);
 
         //push sugar values into array on submission
         a1c.push(parseInt(sugarValue));
@@ -175,31 +177,83 @@
 
     function storeValues(){
         // store to localStorage
-
         //on submit we'll store in this array
-        storageValues.push(storage);
+        storageArray.push(storage);
 
         localStorage.setItem('storage', JSON.stringify(storageArray)); 
         console.log('storage: ', JSON.stringify(storageArray));
 
     }
 
-
     function retrieveValues(){
         // retrieve from localStorage
+
         //checks if localStorage already exists
         localStorage.getItem('storage') ? JSON.parse(localStorage.getItem('storage')) : [];
         
-        //     let retrievedStorage = JSON.parse(localStorage.getItem('storage'));
+        let retrievedStorage = JSON.parse(localStorage.getItem('storage'));
+       // console.log('retrievedStorage: ', retrievedStorage[1].sugarValue);
 
-        // } else {
-        //     retrievedStorage = [];
-        // }
+       for (let i = 0; i < retrievedStorage.length; i++) {
+            if (localStorage.getItem('storage')) {
+
+                let sugarValue = retrievedStorage[i].sugarValue;
+                let exerciseValue = retrievedStorage[i].exerciseValue;
+
+       console.log(sugarValue);
+
+        vein = Math.abs((sugarValue * .19) / scaler - exerciseValue / scaler);
+        foot = Math.abs((sugarValue * .15) / scaler - exerciseValue / scaler);
+        numb = Math.abs((sugarValue * .5) / scaler - exerciseValue / scaler);
+        kidney = Math.abs((sugarValue * .25) / scaler - exerciseValue / scaler);
+        heart = Math.abs((sugarValue * .75) / scaler - exerciseValue / scaler);
+
+                let data = [];
+
+                data.push(
+                    {axis:"Vein Disease", value:vein},
+                    {axis:"Foot Ulcers", value:foot},
+                    {axis:"Numbness", value:numb},
+                    {axis:"Kidney Failure", value:kidney},
+                    {axis:"Heart Disease", value:heart},
+                );
+
+                dataset.push(data);
+
+                RadarChart(".radarChart", dataset, radarChartOptions);
+                summary.style.display = "block";
+
+
+            } else {
+                retrievedStorage = [];
+                // let summary = document.getElementById('#summary-container');
+
+            }
+       }
+
         
-        console.log('retrievedStorage: ', retrievedStorage);
+
+        //renderChart();
+        
+       // console.log('retrievedStorage: ', retrievedStorage);
     }
 
 
+    // function renderChart() {
+    //     //render the chart on load if we have values already stored
+    //     //redo the calculations???
+    //     RadarChart(".radarChart", dataset, radarChartOptions);
+
+
+    // }
+
+    // function calculate(sugarValue, exerciseValue) {
+    //     vein = Math.abs((sugarValue * .19) / scaler - exerciseValue / scaler);
+    //     foot = Math.abs((sugarValue * .15) / scaler - exerciseValue / scaler);
+    //     numb = Math.abs((sugarValue * .5) / scaler - exerciseValue / scaler);
+    //     kidney = Math.abs((sugarValue * .25) / scaler - exerciseValue / scaler);
+    //     heart = Math.abs((sugarValue * .75) / scaler - exerciseValue / scaler);
+    // }
     // function retrieveValues(){
     //     // retrieve from localStorage
     //     let retrivedSugar = localStorage.getItem('sugarValue');
@@ -221,7 +275,7 @@
     // ////////////////////////////////////////////////////////////// 
 
     let color = d3.scale.ordinal()
-        .range(['#ff6600', '#CC333F', '#00A0B0', '#7848c0', '#7574ea', '#907985', '#74564b']);
+        .range(['#ff6600', '#CC333F', '#00A0B0', '#7848c0', '#7574ea', '#907985', '#74564b', '#ff6600']);
 
     let radarChartOptions = {
         w: width,

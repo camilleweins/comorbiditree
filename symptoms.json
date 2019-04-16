@@ -1,0 +1,24 @@
+{
+	"risks":[
+		{
+			"system": "heart",
+			"diseases": [ , , , ,, ,]
+		},
+		{
+			"system": "veins",
+			"diseases": ["more vericose veins", "significant swelling", "itching", "burning"]
+		},
+		{
+			"system": "kidney",
+			"symptoms": ["foamy urine", "High blood pressure", "Ankle and leg swelling", "leg cramps", "Going to the bathroom more often at night", "Morning sickness, nausea and vomiting", "Weakness, paleness and anemia", "Itching"]
+		},
+		{
+			"system": "nerves",
+			"diseases": [ , , , ,, ,]
+		},
+		{
+			"system": "foot",
+			"diseases": ["odors, , , ,, ,"]
+		},
+	]
+}

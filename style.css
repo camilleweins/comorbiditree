@@ -6,7 +6,7 @@ html, body {
 	font-weight: 300;
 	fill: #242424;
 	text-align: center;
-	text-shadow: 0 1px 0 #fff, 1px 0 0 #fff, -1px 0 0 #fff, 0 -1px 0 #fff;
+	//text-shadow: 0 1px 0 #fff, 1px 0 0 #fff, -1px 0 0 #fff, 0 -1px 0 #fff;
 	cursor: default;
 }
 
@@ -21,10 +21,23 @@ html, body {
 
 .stats {
 	padding-top: 20px;
-	text-align: left;
-	padding-bottom: 20px;
+	padding-bottom: 100px;
 	padding-left: 40px;
+	height: 800px;
+	background: #fcebe1;
+  	margin: 0;
+
 }
+
+.fields {
+	margin: 0;
+  	position: absolute;
+  	top: 30%;
+  	-ms-transform: translateY(-50%);
+  	transform: translateY(-50%);
+  	align-items: center;
+}
+
 
 .a1c {
 	text-align: left;
@@ -39,8 +52,21 @@ html, body {
 
 canvas {
 	padding-top: 20px;
- 	display: flex;
+ 	display: inline-flex;
 
+}
+
+img {
+	width: 4%;
+}
+
+caption {
+	font-size: 3px;
+}
+
+#summary-container {
+	padding-top: 100px;
+	padding-bottom: 100px;
 }
 
 /**/

@@ -14,24 +14,91 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js" charset="utf-8"></script>
 </head>
 <body onload="retrieveValues()">
-    <div class="blood-volume">
+<!--     <div class="blood-volume">
         <h3>Estimated Blood Volume</h3>
         <div id="blood-volume-value"></div>
     </div>
     <div class="a1c">
         <h3>Predicted a1c Value</h3>
         <div id="a1c-value"></div>
-    </div>
+    </div> -->
     <div class="stats">
-        <label>Blood sugar(mg/dL)</label>
+            <h1>Please enter your data.</h1>
+
+        <div class="fields">
+                    <label>Blood sugar(mg/dL)</label>
         <input type="text" name="sugar" id="sugar">
         <br>
         <label>Exercise duration(mins)</label>
         <input type="text" name="exercise" value="0" id="exercise">
         <br>
+        <br>
+        <input type="submit" onclick="run()" id="button">
+        </div>
+
+
+
     </div>
-    <input type="submit" onclick="run()" id="button">
-    <div class="radarChart"></div>
+    <div id="summary-container" style="display: none;">
+        <div>
+            <h1>Your Summary</h1>
+            <ul>
+                <li>
+                    <span>
+                        <h3>Your risks are <span></span></h3>
+
+                        <img src="img/heart.svg">
+                        <caption>Heart by Laymik from the Noun Project</caption>
+                    </span>
+
+                </li>
+                <li>
+                    <span>
+                        <h3>Your risks are <span></span></h3>
+                        <img src="img/foot.svg">
+                        <caption>foot by BomSymbols from the Noun Project</caption>
+                    </span>
+
+                </li><li>
+                    <span>
+                        <h3>Your risks are <span></span></h3>
+                        <h4>You might expect to see:</h4>
+                        <ul>
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                        </ul>
+                        <img src="img/veins.svg">
+                        <caption>veins by Grégory Montigny from the Noun Project</caption>
+
+                    </span>
+
+                </li><li>
+                    <span>
+                        <h3>Your risks are <span></span></h3>
+
+                        <img src="img/nerve.svg">
+                        <caption>nerve cell by Olena Panasovska from the Noun Project</caption>
+                    </span>
+
+                </li>
+                <li>
+                    <span>
+                        <h3>Your risks are <span></span></h3>
+
+                        <img src="img/kidney.svg">
+                        <caption>Kidney by BomSymbols from the Noun Project</caption>
+                    </span>
+
+                </li>
+            
+            </ul>
+        </div>
+    </div>
+
+    <div class="radarChart" style="display: none;"></div>
     <script src="graph.js"></script>
     <script src="comorbiditree.js"></script>
 </body>
