@@ -45,17 +45,11 @@ html, body {
 	padding-left: 40px;
 }
 
-.radarChart {
-	padding-top: 700px;
+#radarChart {
+	padding-top: 250px;
+	height: 800px;
 
 }
-/*
-canvas {
-	padding-top: 20px;
- 	display: inline-flex;
- 	position: relative;
-
-}*/
 
 img {
 	width: 4%;
@@ -66,15 +60,8 @@ caption {
 }
 
 #summary-container {
-/*	padding-top: 100px;
-	padding-bottom: 100px;
-
-		padding-top: 20px;
-	padding-bottom: 100px;
-	padding-left: 40px;*/
 	height: 800px;
-/*	background: #fcebe1;
-*/  	margin: 0;
+	margin: 0;
 }
 
 #summary-content {

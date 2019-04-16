@@ -2,6 +2,7 @@
     let sugar = document.getElementById('sugar');
     let exercise = document.getElementById('exercise');
     let summary = document.getElementById('summary-container');
+    let showGraph = document.getElementById('radarChart');
 
     // variables for the equations
     let vein, foot, numb, kidney, heart;
@@ -23,7 +24,7 @@
         height = Math.min(width, window.innerHeight - margin.top - margin.bottom - 20);
 
     // array of sugar values
-    let a1c = [];
+    //let a1c = [];
 
     let particles = [];
 
@@ -120,10 +121,6 @@ var cnv = createCanvas(windowWidth/2, windowHeight);
         // hide canvas until we have data
         select('#sketch').hide();
         button();
-    }
-
-    function windowResized() {
-        resizeCanvas(windowWidth, windowHeight);
     }
 
     class glucose{
@@ -224,8 +221,10 @@ var cnv = createCanvas(windowWidth/2, windowHeight);
 
                 dataset.push(data);
 
-                RadarChart(".radarChart", dataset, radarChartOptions);
-                summary.style.display = "block";
+                RadarChart('#radarChart', dataset, radarChartOptions);
+                
+                summary.style.display = 'block';
+                showGraph.style.display = 'block';
 
 
             } else {
