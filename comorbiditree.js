@@ -111,12 +111,9 @@ vein = Math.abs((sugarValue * .19) / scaler - exerciseValue / scaler);
 
     function setup() {
         //let bloodConversion = parseInt(sugar.value)*10;
-var cnv = createCanvas(windowWidth/2, windowHeight);
-  //var x = (windowWidth - width) / 2;
-  //var y = (windowHeight - height) / 2;
-  cnv.position(0, windowHeight);
-        // createCanvas(windowWidth, windowHeight);
-    cnv.parent('sketch');
+        var cnv = createCanvas(windowWidth/2, windowHeight);
+        cnv.position(0, windowHeight);
+        cnv.parent('sketch');
 
         // hide canvas until we have data
         select('#sketch').hide();
@@ -139,10 +136,21 @@ var cnv = createCanvas(windowWidth/2, windowHeight);
         fill('#fcebe1');
         noStroke();
         ellipse(this.x, this.y, 2);
+
+        //we also want to render the sugar value again
       }
 
       // update(){
       //   //we're gonna clear the array and then 
+
+        // if particles = [] {
+            //x1 = the old value
+            //x2 = new value
+            //calc difference
+            //replace the values in the array and animate the difference
+
+        //}
+
       // }
     }
 
@@ -159,15 +167,23 @@ var cnv = createCanvas(windowWidth/2, windowHeight);
         let run = select('#button');
         run.mousePressed(function() {
             //the button listener
+            //no more deciliters
             let bloodConversion = parseInt(sugar.value)*10;
+            //value in mg
             let bloodValue = sugar.value;
+
 
             for (let i = 0; i < bloodConversion; i++) {
                 particles.push(new glucose());
             }
+
        // display on button press
         select('#sketch').show();
         })
+    }
+
+    function preload() {
+        //keep rendering graph if stuff is in the particles array
     }
 
     // function storeValues(sugarValue, exerciseValue){
@@ -198,36 +214,48 @@ var cnv = createCanvas(windowWidth/2, windowHeight);
        for (let i = 0; i < retrievedStorage.length; i++) {
             if (localStorage.getItem('storage')) {
 
-                let sugarValue = retrievedStorage[i].sugarValue;
-                let exerciseValue = retrievedStorage[i].exerciseValue;
+            let sugarValue = retrievedStorage[i].sugarValue;
+            let exerciseValue = retrievedStorage[i].exerciseValue;
 
-       console.log(sugarValue);
+           console.log(sugarValue);
 
-        vein = Math.abs((sugarValue * .19) / scaler - exerciseValue / scaler);
-        foot = Math.abs((sugarValue * .15) / scaler - exerciseValue / scaler);
-        numb = Math.abs((sugarValue * .5) / scaler - exerciseValue / scaler);
-        kidney = Math.abs((sugarValue * .25) / scaler - exerciseValue / scaler);
-        heart = Math.abs((sugarValue * .75) / scaler - exerciseValue / scaler);
+            vein = Math.abs((sugarValue * .19) / scaler - exerciseValue / scaler);
+            foot = Math.abs((sugarValue * .15) / scaler - exerciseValue / scaler);
+            numb = Math.abs((sugarValue * .5) / scaler - exerciseValue / scaler);
+            kidney = Math.abs((sugarValue * .25) / scaler - exerciseValue / scaler);
+            heart = Math.abs((sugarValue * .75) / scaler - exerciseValue / scaler);
 
-                let data = [];
+            let data = [];
 
-                data.push(
-                    {axis:"Vein Disease", value:vein},
-                    {axis:"Foot Ulcers", value:foot},
-                    {axis:"Numbness", value:numb},
-                    {axis:"Kidney Failure", value:kidney},
-                    {axis:"Heart Disease", value:heart},
-                );
+            data.push(
+                {axis:"Vein Disease", value:vein},
+                {axis:"Foot Ulcers", value:foot},
+                {axis:"Numbness", value:numb},
+                {axis:"Kidney Failure", value:kidney},
+                {axis:"Heart Disease", value:heart},
+            );
 
-                dataset.push(data);
+            console.log(vein);
+            dataset.push(data);
 
-                RadarChart('#radarChart', dataset, radarChartOptions);
-                
-                summary.style.display = 'block';
-                showGraph.style.display = 'block';
-                
-               // display onload from current data
-                select('#sketch').show();
+            RadarChart('#radarChart', dataset, radarChartOptions);
+            
+            summary.style.display = 'block';
+            showGraph.style.display = 'block';
+            
+
+            let bloodConversion = retrievedStorage[i].sugarValue*10;
+            //value in mg
+            let bloodValue = retrievedStorage[i].sugarValue;
+
+
+            for (let i = 0; i < bloodConversion; i++) {
+                particles.push(new glucose());
+            }
+
+           // display onload from current data
+            select('#sketch').show();
+
 
             } else {
                 retrievedStorage = [];

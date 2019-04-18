@@ -24,10 +24,11 @@ html, body {
 	padding-bottom: 100px;
 	padding-left: 40px;
 	height: 800px;
-	background: #fcebe1;
+	background: #fdf6f0;
   	margin: 0;
 
 }
+
 
 .fields {
 	margin: 0;
@@ -79,6 +80,13 @@ caption {
 
 hr {
 	border: 3px solid #f3a184;
+}
+
+.stats h1 {
+	margin: 0;
+	position: relative;
+	top: 40%;
+
 }
 
 /**/
