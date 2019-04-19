@@ -161,6 +161,20 @@ vein = Math.abs((sugarValue * .19) / scaler - exerciseValue / scaler);
             particles[i].move();
             particles[i].render();
         }  
+
+        rectMode(CENTER);
+            fill(26, 23, 60, 85);
+  noStroke();
+          rectMode(CENTER);
+
+          //x ,y ,width, height
+        rect(windowWidth/4, windowHeight/4+200, windowWidth/4+50, windowHeight/2, 3);
+
+        fill(255);
+        textAlign(CENTER);
+
+        textSize(width/6);
+        text('128', windowWidth/4, windowHeight/2-100);
     }
 
     function button() {
@@ -180,10 +194,6 @@ vein = Math.abs((sugarValue * .19) / scaler - exerciseValue / scaler);
        // display on button press
         select('#sketch').show();
         })
-    }
-
-    function preload() {
-        //keep rendering graph if stuff is in the particles array
     }
 
     // function storeValues(sugarValue, exerciseValue){
