@@ -112,8 +112,8 @@ caption {
 #summary-content li{
 		list-style-type: none;
 		margin: 0;
-		padding-bottom: 80px;
-
+/*		padding-bottom: 80px;
+*/
 }
 
 #summary-content ul {
