@@ -63,50 +63,11 @@ vein = Math.abs((sugarValue * .19) / scaler - exerciseValue / scaler);
             {axis:"Heart Disease", value:heart},
         );
 
-        console.log(data);
+        //console.log(data);
 
         //make our collection of data
         dataset.push(data);
 
-        console.log(dataset);
-
-        // draw the chart
-        // RadarChart(".radarChart", dataset, radarChartOptions);
-
-        //push sugar values into array on submission
-        // a1c.push(parseInt(sugarValue));
-
-        // // an estimation of a1c value
-        // let total = 0;
-        // for (let i = 0; i < a1c.length; i++) {
-        //     total += a1c[i];
-        // }
-
-        // // only calculate average if there's more than one item in array
-        // if (a1c.length > 1) {
-        //     let average = total / a1c.length;
-        //     let a1cValue = (average + 46.7) / 28.7;
-        //     console.log(average);
-
-        //     // output value to the div
-        //     let a1cContainer = document.getElementById("a1c-value");
-        //     a1cContainer.innerHTML = a1cValue;
-
-        //     console.log(a1cValue);
-
-        // }
-
-        // let heightValue = 65 / 39.37;
-        // let weightValue = 135 / 2.205;
-
-        // //only use the female Nadler's equation
-        // //convert to US
-        // let bV = ((0.3561 * Math.pow(heightValue, 3)) + (0.03308 * (weightValue) + 0.1833));
-
-        // console.log(bV);
-
-        // let bVContainer = document.getElementById("blood-volume-value");
-        // bVContainer.innerHTML = '~' + Math.round(bV) + ' L';
     }
 
     function setup() {
@@ -136,22 +97,8 @@ vein = Math.abs((sugarValue * .19) / scaler - exerciseValue / scaler);
         fill('#fcebe1');
         noStroke();
         ellipse(this.x, this.y, 2);
-
-        //we also want to render the sugar value again
       }
 
-      // update(){
-      //   //we're gonna clear the array and then 
-
-        // if particles = [] {
-            //x1 = the old value
-            //x2 = new value
-            //calc difference
-            //replace the values in the array and animate the difference
-
-        //}
-
-      // }
     }
 
     function draw() {
@@ -174,7 +121,15 @@ vein = Math.abs((sugarValue * .19) / scaler - exerciseValue / scaler);
         textAlign(CENTER);
 
         textSize(width/6);
-        text(sugar.value, windowWidth/4, windowHeight/2-100);
+       text(sugar.value, windowWidth/4, windowHeight/2-100);
+
+       // if (retrievedStorage = []) {
+       //      text(sugar.value, windowWidth/4, windowHeight/2-100);
+
+       // } else {
+
+       // }
+
     }
 
     function button() {
@@ -186,11 +141,23 @@ vein = Math.abs((sugarValue * .19) / scaler - exerciseValue / scaler);
             //value in mg
             let bloodValue = sugar.value;
 
+            // //
+            // let newBloodValue; 
+
 
             for (let i = 0; i < bloodConversion; i++) {
-                particles.push(new glucose());
-            }
+               // if (particles = []) {
+                    particles.push(new glucose());
 
+                // } else {
+                //     if old < new
+                //         if new > old
+                // }
+            }
+       //  fill(255);
+       //  textAlign(CENTER);
+       //  textSize(width/6);
+       // text(sugar.value, windowWidth/4, windowHeight/2-100);
        // display on button press
         select('#sketch').show();
         })
@@ -200,12 +167,6 @@ vein = Math.abs((sugarValue * .19) / scaler - exerciseValue / scaler);
         //same as draw but it needs to use stored values
 
     }
-
-    // function storeValues(sugarValue, exerciseValue){
-    //     // store to localStorage
-    //     localStorage.setItem('sugarValue', sugarValue, Date.now());
-    //     localStorage.setItem('exerciseValue', exerciseValue, Date.now());
-    // }
 
     function storeValues(){
         // store to localStorage
@@ -232,7 +193,7 @@ vein = Math.abs((sugarValue * .19) / scaler - exerciseValue / scaler);
             let sugarValue = retrievedStorage[i].sugarValue;
             let exerciseValue = retrievedStorage[i].exerciseValue;
 
-           console.log(sugarValue);
+          // console.log(sugarValue);
 
             vein = Math.abs((sugarValue * .19) / scaler - exerciseValue / scaler);
             foot = Math.abs((sugarValue * .15) / scaler - exerciseValue / scaler);
@@ -250,7 +211,7 @@ vein = Math.abs((sugarValue * .19) / scaler - exerciseValue / scaler);
                 {axis:"Heart Disease", value:heart},
             );
 
-            console.log(vein);
+            //console.log(vein);
             dataset.push(data);
 
             RadarChart('#radarChart', dataset, radarChartOptions);
@@ -258,7 +219,6 @@ vein = Math.abs((sugarValue * .19) / scaler - exerciseValue / scaler);
             summary.style.display = 'block';
             showGraph.style.display = 'block';
             
-
             //scope
             let bloodConversion = sugarValue*10;
             //value in mg
@@ -268,18 +228,21 @@ vein = Math.abs((sugarValue * .19) / scaler - exerciseValue / scaler);
             let lastEntry = retrievedStorage[retrievedStorage.length-1];
             //last entered sugar value
             let lastSugar = lastEntry.sugarValue*10;
-            console.log(lastSugar);
-
+            //console.log(lastSugar);
+               particles = [];
             for (let i = 0; i < lastSugar; i++) {
+
                 particles.push(new glucose());
 
             }
-                    fill(255);
-        textAlign(CENTER);
+            // fill(0);
+            // textAlign(CENTER);
 
-        textSize(width/6);
-        text(sugarValue, windowWidth/4, windowHeight/2-100);
-
+            // textSize(width/6);
+            sugar.value = lastEntry.sugarValue;
+            // text(, windowWidth/4, windowHeight/2-100);
+            // console.log(lastSugar/10);
+            //redraw();
             // // only calculate average if there's more than one item in array
         // if (a1c.length > 1) {
         //     let average = total / a1c.length;
@@ -294,63 +257,26 @@ vein = Math.abs((sugarValue * .19) / scaler - exerciseValue / scaler);
 
            // display onload from current data
 
-           draw();
+
+
+          /// draw();
             select('#sketch').show();
 
 
             } else {
                 retrievedStorage = [];
+                text(sugar.value, windowWidth/4, windowHeight/2-100);
+
                 // let summary = document.getElementById('#summary-container');
 
             }
        }
 
-        
-
+    
         //renderChart();
         
        // console.log('retrievedStorage: ', retrievedStorage);
     }
-
-    function aggregateSymptoms() {
-        //json load
-        array = retrievedStorage[i].sugarValue;
-        array.forEach(function(data) {
-
-        }); //each item in symptoms json put in an li in the respective div
-    }
-
-
-    // function renderChart() {
-    //     //render the chart on load if we have values already stored
-    //     //redo the calculations???
-    //     RadarChart(".radarChart", dataset, radarChartOptions);
-
-
-    // }
-
-    // function calculate(sugarValue, exerciseValue) {
-    //     vein = Math.abs((sugarValue * .19) / scaler - exerciseValue / scaler);
-    //     foot = Math.abs((sugarValue * .15) / scaler - exerciseValue / scaler);
-    //     numb = Math.abs((sugarValue * .5) / scaler - exerciseValue / scaler);
-    //     kidney = Math.abs((sugarValue * .25) / scaler - exerciseValue / scaler);
-    //     heart = Math.abs((sugarValue * .75) / scaler - exerciseValue / scaler);
-    // }
-    // function retrieveValues(){
-    //     // retrieve from localStorage
-    //     let retrivedSugar = localStorage.getItem('sugarValue');
-    //     let retrivedExercise = localStorage.getItem('exerciseValue');
-
-    //     console.log('retrievedSugar: ', retrivedSugar);
-    //     console.log('retrievedExercise: ', retrivedExercise);
-
-    //     // same object
-    //     // {
-    //     //     sugarValue: 200,
-    //     //     dateCaptured: ,
-    //     //     someOtherField: ,
-    //     // }
-    // }
 
     // ////////////////////////////////////////////////////////////// 
     // //////////////////// Draw the Chart ////////////////////////// 
