@@ -7,12 +7,19 @@
     // variables for the equations
     let vein, foot, numb, kidney, heart;
 
+    let veinRiskContainer = document.getElementById('veins-risk'); 
+    let footRiskContainer = document.getElementById('foot-risk');
+    let numbRiskContainer = document.getElementById('nerve-risk');
+    let kidneyRiskContainer = document.getElementById('kidney-risk'); 
+    let heartRiskContainer = document.getElementById('heart-risk');
+
+
     // initialize
     let dataset = [];
     let storageArray;
     let storage;
     let retrievedStorage;
-    let scaler = 0.01;
+    let scaler = 1000;
 
     /* Radar chart design created by Nadieh Bremer - VisualCinnamon.com */
     ////////////////////////////////////////////////////////////// 
@@ -47,11 +54,11 @@
         storeValues();
         retrieveValues();
 
-vein = Math.abs((sugarValue * .19) / scaler - exerciseValue / scaler);
-        foot = Math.abs((sugarValue * .15) / scaler - exerciseValue / scaler);
-        numb = Math.abs((sugarValue * .5) / scaler - exerciseValue / scaler);
-        kidney = Math.abs((sugarValue * .25) / scaler - exerciseValue / scaler);
-        heart = Math.abs((sugarValue * .75) / scaler - exerciseValue / scaler);
+        vein = Math.abs((sugarValue^19) / scaler - exerciseValue / scaler);
+        foot = Math.abs((sugarValue^15) / scaler - exerciseValue / scaler);
+        numb = Math.abs((sugarValue^50) / scaler - exerciseValue / scaler);
+        kidney = Math.abs((sugarValue^ 25) / scaler - exerciseValue / scaler);
+        heart = Math.abs((sugarValue^ 75) / scaler - exerciseValue / scaler);
 
         let data = [];
 
@@ -121,7 +128,12 @@ vein = Math.abs((sugarValue * .19) / scaler - exerciseValue / scaler);
         textAlign(CENTER);
 
         textSize(width/6);
-       text(sugar.value, windowWidth/4, windowHeight/2-100);
+       text(sugar.value, windowWidth/4.1, windowHeight/2-100);
+        textSize(16);
+        text("mg/L", windowWidth/3.3, windowHeight/2-100);
+
+                text("out of 4.3 Liters total in your body", windowWidth/4, windowHeight/2-30);
+
 
        // if (retrievedStorage = []) {
        //      text(sugar.value, windowWidth/4, windowHeight/2-100);
@@ -195,11 +207,11 @@ vein = Math.abs((sugarValue * .19) / scaler - exerciseValue / scaler);
 
           // console.log(sugarValue);
 
-            vein = Math.abs((sugarValue * .19) / scaler - exerciseValue / scaler);
-            foot = Math.abs((sugarValue * .15) / scaler - exerciseValue / scaler);
-            numb = Math.abs((sugarValue * .5) / scaler - exerciseValue / scaler);
-            kidney = Math.abs((sugarValue * .25) / scaler - exerciseValue / scaler);
-            heart = Math.abs((sugarValue * .75) / scaler - exerciseValue / scaler);
+            vein = Math.abs((sugarValue^19) / scaler - exerciseValue / scaler);
+            foot = Math.abs((sugarValue^15) / scaler - exerciseValue / scaler);
+            numb = Math.abs((sugarValue^50) / scaler - exerciseValue / scaler);
+            kidney = Math.abs((sugarValue^ 25) / scaler - exerciseValue / scaler);
+            heart = Math.abs((sugarValue^ 75) / scaler - exerciseValue / scaler);
 
             let data = [];
 
@@ -256,13 +268,8 @@ vein = Math.abs((sugarValue * .19) / scaler - exerciseValue / scaler);
         //     console.log(a1cValue);
 
            // display onload from current data
-
-
-
           /// draw();
             select('#sketch').show();
-
-
             } else {
                 retrievedStorage = [];
                 text(sugar.value, windowWidth/4, windowHeight/2-100);
