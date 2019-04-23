@@ -8,6 +8,8 @@ html, body {
 	text-align: center;
 	//text-shadow: 0 1px 0 #fff, 1px 0 0 #fff, -1px 0 0 #fff, 0 -1px 0 #fff;
 	cursor: default;
+		  overflow-x: hidden;
+
 }
 
 .legend {
@@ -76,8 +78,11 @@ html, body {
 }
 
 img {
-	width: 4%;
-}
+	width: 8%;
+/*	float: left;
+*/	position: relative;
+/*left: 40%;
+*/}
 
 caption {
 	font-size: 3px;
@@ -86,13 +91,35 @@ caption {
 #summary-container {
 	height: 800px;
 	margin: 0;
+	width: 100vw;
+
 }
+
+/*#summary-content span {
+	display: inline;
+	position: relative;
+	margin: 0;
+}*/
 
 #summary-content {
 	padding-top: 50px;
 	float: right;
 	width: 45%;
 	text-align: left;
+
+}
+
+#summary-content li{
+		list-style-type: none;
+		margin: 0;
+		padding-bottom: 80px;
+
+}
+
+#summary-content ul {
+	margin: 0;
+	position: relative;
+	display: inline;
 }
 
 #summary-header {
@@ -111,6 +138,47 @@ hr {
 	top: 40%;
 	text-align: center;
 
+}
+
+#heart-container {
+left: 47%;		
+display: table-caption;
+width: 200px;
+	padding-bottom: 5px;
+	position: relative;
+}
+
+#foot-container {
+		position: relative;
+
+left: 40%;	display: table-caption;
+width: 200px;
+	padding-bottom: 5px;
+}
+#veins-container {
+		position: relative;
+
+left: 40%;		
+display: table-caption;
+width: 200px;
+	padding-bottom: 5px;
+}
+
+#nerve-container {
+		position: relative;
+
+left: 39%;		
+display: table-caption;
+width: 200px;
+	padding-bottom: 5px;
+}
+#kidney-container {
+		position: relative;
+
+	left: 44%;		
+display: table-caption;
+width: 200px;
+	padding-bottom: 5px;
 }
 
 /**/
