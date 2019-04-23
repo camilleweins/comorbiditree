@@ -27,18 +27,41 @@ html, body {
 	background: #fdf6f0;
   	margin: 0;
 
+
 }
 
 
 .fields {
 	margin: 0;
-  	position: absolute;
-  	top: 30%;
+/*  	position: absolute;
+  	top: 30%;*/
   	-ms-transform: translateY(-50%);
   	transform: translateY(-50%);
-  	align-items: center;
+  	align-items: left;
+  	text-align: left;
+  	 position: relative;
+	top: 50%;
+	left: 43%;
 }
 
+
+#sugar {
+		position: relative;
+		left: 20px;
+
+}
+
+#exercise {
+	position: relative;
+	left: 1px;
+}
+
+#button {
+	position: relative;
+	text-align: center;
+	align-items: center;
+	left: 6%;
+}
 
 .a1c {
 	text-align: left;
