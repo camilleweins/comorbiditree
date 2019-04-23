@@ -163,9 +163,9 @@ vein = Math.abs((sugarValue * .19) / scaler - exerciseValue / scaler);
         }  
 
         rectMode(CENTER);
-            fill(26, 23, 60, 85);
-  noStroke();
-          rectMode(CENTER);
+        fill(26, 23, 60, 85);
+        noStroke();
+        rectMode(CENTER);
 
           //x ,y ,width, height
         rect(windowWidth/4, windowHeight/4+200, windowWidth/4+50, windowHeight/2, 3);
@@ -174,7 +174,7 @@ vein = Math.abs((sugarValue * .19) / scaler - exerciseValue / scaler);
         textAlign(CENTER);
 
         textSize(width/6);
-        text('128', windowWidth/4, windowHeight/2-100);
+        text(sugar.value, windowWidth/4, windowHeight/2-100);
     }
 
     function button() {
@@ -194,6 +194,11 @@ vein = Math.abs((sugarValue * .19) / scaler - exerciseValue / scaler);
        // display on button press
         select('#sketch').show();
         })
+    }
+
+    function redraw() {
+        //same as draw but it needs to use stored values
+
     }
 
     // function storeValues(sugarValue, exerciseValue){
@@ -254,16 +259,42 @@ vein = Math.abs((sugarValue * .19) / scaler - exerciseValue / scaler);
             showGraph.style.display = 'block';
             
 
-            let bloodConversion = retrievedStorage[i].sugarValue*10;
+            //scope
+            let bloodConversion = sugarValue*10;
             //value in mg
-            let bloodValue = retrievedStorage[i].sugarValue;
+            //let bloodValue = retrievedStorage[i].sugarValue;
 
+            //should hold the last object in the array
+            let lastEntry = retrievedStorage[retrievedStorage.length-1];
+            //last entered sugar value
+            let lastSugar = lastEntry.sugarValue*10;
+            console.log(lastSugar);
 
-            for (let i = 0; i < bloodConversion; i++) {
+            for (let i = 0; i < lastSugar; i++) {
                 particles.push(new glucose());
+
             }
+                    fill(255);
+        textAlign(CENTER);
+
+        textSize(width/6);
+        text(sugarValue, windowWidth/4, windowHeight/2-100);
+
+            // // only calculate average if there's more than one item in array
+        // if (a1c.length > 1) {
+        //     let average = total / a1c.length;
+        //     let a1cValue = (average + 46.7) / 28.7;
+        //     console.log(average);
+
+        //     // output value to the div
+        //     let a1cContainer = document.getElementById("a1c-value");
+        //     a1cContainer.innerHTML = a1cValue;
+
+        //     console.log(a1cValue);
 
            // display onload from current data
+
+           draw();
             select('#sketch').show();
 
 
@@ -279,6 +310,14 @@ vein = Math.abs((sugarValue * .19) / scaler - exerciseValue / scaler);
         //renderChart();
         
        // console.log('retrievedStorage: ', retrievedStorage);
+    }
+
+    function aggregateSymptoms() {
+        //json load
+        array = retrievedStorage[i].sugarValue;
+        array.forEach(function(data) {
+
+        }); //each item in symptoms json put in an li in the respective div
     }
 
 
