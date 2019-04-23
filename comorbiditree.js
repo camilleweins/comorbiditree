@@ -7,12 +7,17 @@
     // variables for the equations
     let vein, foot, numb, kidney, heart;
 
-    let veinRiskContainer = document.getElementById('veins-risk'); 
-    let footRiskContainer = document.getElementById('foot-risk');
-    let numbRiskContainer = document.getElementById('nerve-risk');
-    let kidneyRiskContainer = document.getElementById('kidney-risk'); 
-    let heartRiskContainer = document.getElementById('heart-risk');
+    let veinRiskContainer = document.getElementById('vein-disease'); 
+    let footRiskContainer = document.getElementById('foot-disease');
+    let numbRiskContainer = document.getElementById('nerve-disease');
+    let kidneyRiskContainer = document.getElementById('kidney-disease'); 
+    let heartRiskContainer = document.getElementById('heart-disease');
 
+    let veinRisk = document.getElementById('veins-risk'); 
+    let footRisk = document.getElementById('foot-risk');
+    let numbRisk = document.getElementById('nerve-risk');
+    let kidneyRisk = document.getElementById('kidney-risk'); 
+    let heartRisk = document.getElementById('heart-risk');
 
     // initialize
     let dataset = [];
@@ -54,11 +59,11 @@
         storeValues();
         retrieveValues();
 
-        vein = Math.abs((sugarValue^19) / scaler - exerciseValue / scaler);
-        foot = Math.abs((sugarValue^15) / scaler - exerciseValue / scaler);
-        numb = Math.abs((sugarValue^50) / scaler - exerciseValue / scaler);
-        kidney = Math.abs((sugarValue^ 25) / scaler - exerciseValue / scaler);
-        heart = Math.abs((sugarValue^ 75) / scaler - exerciseValue / scaler);
+        vein = Math.abs(exerciseValue - pow(sugarValue, 19)) / scaler;
+        foot = Math.abs(pow(sugarValue, 15) - exerciseValue) / scaler;
+        numb = Math.abs((sugarValue^50) - exerciseValue) / scaler;
+        kidney = Math.abs((sugarValue^25) - exerciseValue) / scaler;
+        heart = Math.abs((sugarValue^ 75) - exerciseValue) / scaler;
 
         let data = [];
 
@@ -74,6 +79,103 @@
 
         //make our collection of data
         dataset.push(data);
+
+            if (vein < 0.090) {
+                veinRisk.innerHTML = 'low';
+                veinRisk.style.color = '#00bd56';
+                console.log('low');
+                                                veinRiskContainer.style.display = 'none';
+
+
+            } else if (vein < 0.110){
+                veinRisk.innerHTML = 'moderate';
+                veinRisk.style.color = '#f6963b';
+                                                veinRiskContainer.style.display = 'none';
+
+
+            } else if (vein > 0.110) {
+                veinRisk.innerHTML = 'high';
+                veinRisk.style.color = '#be2b00';
+                veinRiskContainer.style.display = 'block';
+                console.log('high ')
+
+            }
+
+            if (foot < 0.054) {
+                footRisk.innerHTML = 'low';
+                footRisk.style.color = '#00bd56';
+                                                footRiskContainer.style.display = 'none';
+
+
+            } else if (foot > 0.054){
+                footRisk.innerHTML = 'moderate';
+                footRisk.style.color = '#f6963b';
+                                                footRiskContainer.style.display = 'none';
+
+
+            } else if (foot > 0.123) {
+                footRisk.innerHTML = 'high';
+                footRisk.style.color = '#be2b00';
+                footRiskContainer.style.display = 'block';
+
+            }
+
+            if (kidney < 0.072) {
+                kidneyRisk.innerHTML = 'low';
+                kidneyRisk.style.color = '#00bd56';
+                                                kidneyRiskContainer.style.display = 'none';
+
+
+            } else if (kidney > 0.072){
+                kidneyRisk.innerHTML = 'moderate';
+                kidneyRisk.style.color = '#f6963b';
+                                                kidneyRiskContainer.style.display = 'none';
+
+
+            } else if (kidney > 0.109) {
+                kidneyRisk.innerHTML = 'high';
+                kidneyRisk.style.color = '#be2b00';
+                kidneyRiskContainer.style.display = 'block';
+
+            }
+
+            if (heart < 0.030) {
+                heartRisk.innerHTML = 'low';
+                heartRisk.style.color = '#00bd56';
+                                                heartRiskContainer.style.display = 'none';
+
+
+            } else if (heart > 0.030){
+                heartRisk.innerHTML = 'moderate';
+                heartRisk.style.color = '#f6963b';
+                                                heartRiskContainer.style.display = 'none';
+
+
+            } else if (heart > 0.20) {
+                heartRisk.innerHTML = 'high';
+                heartRisk.style.color = '#be2b00';
+                heartRiskContainer.style.display = 'block';
+
+            }
+
+            if (numb < 0.049) {
+                numbRisk.innerHTML = 'low';
+                numbRisk.style.color = '#00bd56';
+                                                numbRiskContainer.style.display = 'none';
+
+
+            } else if (numb > 0.049){
+                numbRisk.innerHTML = 'moderate';
+                numbRisk.style.color = '#f6963b';
+                                numbRiskContainer.style.display = 'none';
+
+
+            } else if (numb > 0.065) {
+                numbRisk.innerHTML = 'high';
+                numbRisk.style.color = '#be2b00';
+                numbRiskContainer.style.display = 'block';
+
+            }
 
     }
 
@@ -207,11 +309,16 @@
 
           // console.log(sugarValue);
 
-            vein = Math.abs((sugarValue^19) / scaler - exerciseValue / scaler);
-            foot = Math.abs((sugarValue^15) / scaler - exerciseValue / scaler);
-            numb = Math.abs((sugarValue^50) / scaler - exerciseValue / scaler);
-            kidney = Math.abs((sugarValue^ 25) / scaler - exerciseValue / scaler);
-            heart = Math.abs((sugarValue^ 75) / scaler - exerciseValue / scaler);
+            vein = Math.abs((sugarValue^19)  - exerciseValue) / scaler;
+            foot = Math.abs((sugarValue^15)  - exerciseValue) / scaler;
+            numb = Math.abs((sugarValue^50)  - exerciseValue) / scaler;
+            kidney = Math.abs((sugarValue^ 25) - exerciseValue) / scaler;
+            heart = Math.abs((sugarValue^ 75)  - exerciseValue )/ scaler;
+
+            console.log("heart value: " + heart);
+            console.log("vein value: " + vein);
+            console.log("kidney value: " + kidney);
+            console.log("foot value: " + foot);
 
             let data = [];
 
@@ -247,28 +354,106 @@
                 particles.push(new glucose());
 
             }
-            // fill(0);
-            // textAlign(CENTER);
 
-            // textSize(width/6);
             sugar.value = lastEntry.sugarValue;
-            // text(, windowWidth/4, windowHeight/2-100);
-            // console.log(lastSugar/10);
-            //redraw();
-            // // only calculate average if there's more than one item in array
-        // if (a1c.length > 1) {
-        //     let average = total / a1c.length;
-        //     let a1cValue = (average + 46.7) / 28.7;
-        //     console.log(average);
 
-        //     // output value to the div
-        //     let a1cContainer = document.getElementById("a1c-value");
-        //     a1cContainer.innerHTML = a1cValue;
+            if (vein < 0.090) {
+                veinRisk.innerHTML = 'low';
+                veinRisk.style.color = '#00bd56';
+                console.log('low');
+                                                veinRiskContainer.style.display = 'none';
 
-        //     console.log(a1cValue);
 
-           // display onload from current data
-          /// draw();
+            } else if (vein < 0.110){
+                veinRisk.innerHTML = 'moderate';
+                veinRisk.style.color = '#f6963b';
+                                                veinRiskContainer.style.display = 'none';
+
+
+            } else if (vein > 0.110) {
+                veinRisk.innerHTML = 'high';
+                veinRisk.style.color = '#be2b00';
+                veinRiskContainer.style.display = 'block';
+                console.log('high ')
+
+            }
+
+            if (foot < 0.054) {
+                footRisk.innerHTML = 'low';
+                footRisk.style.color = '#00bd56';
+                                                footRiskContainer.style.display = 'none';
+
+
+            } else if (foot > 0.054){
+                footRisk.innerHTML = 'moderate';
+                footRisk.style.color = '#f6963b';
+                                                footRiskContainer.style.display = 'none';
+
+
+            } else if (foot > 0.123) {
+                footRisk.innerHTML = 'high';
+                footRisk.style.color = '#be2b00';
+                footRiskContainer.style.display = 'block';
+
+            }
+
+            if (kidney < 0.072) {
+                kidneyRisk.innerHTML = 'low';
+                kidneyRisk.style.color = '#00bd56';
+                                                kidneyRiskContainer.style.display = 'none';
+
+
+            } else if (kidney > 0.072){
+                kidneyRisk.innerHTML = 'moderate';
+                kidneyRisk.style.color = '#f6963b';
+                                                kidneyRiskContainer.style.display = 'none';
+
+
+            } else if (kidney > 0.109) {
+                kidneyRisk.innerHTML = 'high';
+                kidneyRisk.style.color = '#be2b00';
+                kidneyRiskContainer.style.display = 'block';
+
+            }
+
+            if (heart < 0.030) {
+                heartRisk.innerHTML = 'low';
+                heartRisk.style.color = '#00bd56';
+                                                heartRiskContainer.style.display = 'none';
+
+
+            } else if (heart > 0.030){
+                heartRisk.innerHTML = 'moderate';
+                heartRisk.style.color = '#f6963b';
+                                                heartRiskContainer.style.display = 'none';
+
+
+            } else if (heart > 0.20) {
+                heartRisk.innerHTML = 'high';
+                heartRisk.style.color = '#be2b00';
+                heartRiskContainer.style.display = 'block';
+
+            }
+
+            if (numb < 0.049) {
+                numbRisk.innerHTML = 'low';
+                numbRisk.style.color = '#00bd56';
+                                                numbRiskContainer.style.display = 'none';
+
+
+            } else if (numb > 0.049){
+                numbRisk.innerHTML = 'moderate';
+                numbRisk.style.color = '#f6963b';
+                                numbRiskContainer.style.display = 'none';
+
+
+            } else if (numb > 0.065) {
+                numbRisk.innerHTML = 'high';
+                numbRisk.style.color = '#be2b00';
+                numbRiskContainer.style.display = 'block';
+
+            }
+
             select('#sketch').show();
             } else {
                 retrievedStorage = [];
