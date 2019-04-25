@@ -144,8 +144,8 @@ hr {
 left: 47%;		
 display: table-caption;
 width: 200px;
-	padding-bottom: 5px;
-	position: relative;
+/*	//padding-bottom: 5px;
+*/	position: relative;
 }
 
 #foot-container {
@@ -153,16 +153,16 @@ width: 200px;
 
 left: 40%;	display: table-caption;
 width: 200px;
-	padding-bottom: 5px;
-}
+/*	padding-bottom: 5px;
+*/}
 #veins-container {
 		position: relative;
 
 left: 40%;		
 display: table-caption;
 width: 200px;
-	padding-bottom: 5px;
-}
+/*	padding-bottom: 5px;
+*/}
 
 #nerve-container {
 		position: relative;
@@ -170,15 +170,15 @@ width: 200px;
 left: 39%;		
 display: table-caption;
 width: 200px;
-	padding-bottom: 5px;
-}
+/*	padding-bottom: 5px;
+*/}
 #kidney-container {
 		position: relative;
 
 	left: 44%;		
 display: table-caption;
 width: 200px;
-	padding-bottom: 5px;
-}
+/*	padding-bottom: 5px;
+*/}
 
 /**/
