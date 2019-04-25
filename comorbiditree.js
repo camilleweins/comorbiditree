@@ -310,7 +310,7 @@
         textSize(16);
         text("mg/L", windowWidth/3.3, windowHeight/2-100);
 
-                text("out of 3.81 Liters total in your body", windowWidth/4, windowHeight/2-30);
+        text("out of 3.81 Liters total in your body", windowWidth/4, windowHeight/2-30);
 
 
        // if (retrievedStorage = []) {
