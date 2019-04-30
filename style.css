@@ -135,7 +135,7 @@ box-shadow: 2px 0px 1px 1px rgba(73,112,122,0.42);		overflow-y: none;
 *//*	height: 80vh;
 *//*	
 */
-left: -1vw;
+left: 2vw;
 padding-bottom: 5vh;
 bottom: 2vh;
 
@@ -154,7 +154,8 @@ bottom: 2vh;
 
 hr {
 	border: 3px solid #f3a184;
-	width: 65vw;
+	width: 64vw;
+	left: 4vw;
 	top: -1.3vh;
 	z-index: 1;
 	position: relative;
