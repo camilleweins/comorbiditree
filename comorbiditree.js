@@ -40,6 +40,11 @@
 
     let particles = [];
 
+let rangeSlider = document.getElementById("slider-range");
+let rangeBullet = document.getElementById("slider-label");
+rangeSlider.disabled = true;
+
+
     function run() {
         let sugarValue = parseInt(sugar.value);
         let exerciseValue = parseInt(exercise.value);
@@ -54,7 +59,6 @@
             'exerciseValue': exerciseValue,
             'dateCaptured': Date.now()
         };
-
 
         storeValues();
         retrieveValues();
@@ -80,64 +84,11 @@
         //make our collection of data
         dataset.push(data);
 
-            // if (vein < 0.090) {
-            //     veinRisk.innerHTML = 'low';
-            //     veinRisk.style.color = '#00bd56';
-            //     console.log('low');
-            //     veinRiskContainer.style.display = 'none';
-
-
-            // } else if (vein < 0.110){
-            //     veinRisk.innerHTML = 'moderate';
-            //     veinRisk.style.color = '#f6963b';
-            //     veinRiskContainer.style.display = 'none';
-
-
-            // } else if (vein > 0.110) {
-            //     veinRisk.innerHTML = 'high';
-            //     veinRisk.style.color = '#be2b00';
-            //     veinRiskContainer.style.display = 'block';
-            //     console.log('high ')
-
-            // }
-
-            // if (foot < 0.054) {
-            //     footRisk.innerHTML = 'low';
-            //     footRisk.style.color = '#00bd56';
-            //                                     footRiskContainer.style.display = 'none';
-
-
-            // } else if (foot > 0.054){
-            //     footRisk.innerHTML = 'moderate';
-            //     footRisk.style.color = '#f6963b';
-            //                                     footRiskContainer.style.display = 'none';
-
-
-            // } else if (foot > 0.123) {
-            //     footRisk.innerHTML = 'high';
-            //     footRisk.style.color = '#be2b00';
-            //     footRiskContainer.style.display = 'block';
-
-            // }
-
-            // if (kidney < 0.072) {
-            //     kidneyRisk.innerHTML = 'low';
-            //     kidneyRisk.style.color = '#00bd56';
-            //                                     kidneyRiskContainer.style.display = 'none';
-
-
-            // } else if (kidney > 0.072){
-            //     kidneyRisk.innerHTML = 'moderate';
-            //     kidneyRisk.style.color = '#f6963b';
-            //                                     kidneyRiskContainer.style.display = 'none';
-
-
-            // } else if (kidney > 0.109) {
-            //     kidneyRisk.innerHTML = 'high';
-            //     kidneyRisk.style.color = '#be2b00';
-            //     kidneyRiskContainer.style.display = 'block';
-
-            // }
+    rangeBullet.innerHTML = sugarValue;
+  let bulletPosition = sugarValue;
+  rangeSlider.value = sugarValue;
+  rangeBullet.style.left = (bulletPosition) + "vw";
+  console.log(bulletPosition);
 
             if (heart > 0.063 && heart < 0.201) {
                 heartRisk.innerHTML = 'high';
@@ -309,8 +260,10 @@
         textSize(16);
         text("mg/L", windowWidth/4.5, windowHeight/2-100);
 
-        text("out of 3.81 Liters total in your body", windowWidth/6, windowHeight/2-30);
+        text("out of 3.81 Liters total in your body", windowWidth/6, windowHeight-400);
     }
+
+
 
     function button() {
         let run = select('#button');
@@ -330,6 +283,7 @@
 
 function windowResized() {
   resizeCanvas(windowWidth/3, windowHeight);
+  //if resized value is ipad width//
 }
 
     function storeValues(){
@@ -517,7 +471,11 @@ function windowResized() {
             sugar.value = lastEntry.sugarValue;
 
 
-
+  rangeBullet.innerHTML = lastEntry.sugarValue;
+  let bulletPosition = lastEntry.sugarValue;
+  rangeSlider.value = lastEntry.sugarValue;
+  rangeBullet.style.left = (bulletPosition) + "vw";
+  console.log(bulletPosition);
 
             select('#sketch').show();
             } else {
