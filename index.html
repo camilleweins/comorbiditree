@@ -13,20 +13,10 @@
     <link href='https://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
     <!-- D3.js -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js" charset="utf-8"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body onload="retrieveValues()">
-<!--     <div class="blood-volume">
-        <h3>Estimated Blood Volume</h3>
-        <div id="blood-volume-value"></div>
-    </div>
-    <div class="a1c">
-        <h3>Predicted a1c Value</h3>
-        <div id="a1c-value"></div>
-    </div> -->
     <div class="stats">
-            
-
-
         <h1>Please enter your data</h1>
         <div class="fields">
         <label>Blood sugar(mg/dL)</label>
@@ -39,75 +29,71 @@
         <a href="#summary-container"><input type="submit" onclick="run()" id="button"></a>
         </div>
     </div>
-
-    <div id="summary-container" style="display: none;">
+    <div id="summary-positioning">
+        <div id="summary-container" style="display: none;">
         <div id="summary-content">
             <h1 id="summary-header">Your Summary</h1>
-            <br>
             <hr>
-            <ul>
-                <li>
+            <ul id="ul">
+                <li class="summary-content-li">
                     <span>
-                        <img src="img/heart.svg" style="width: 5%;">
+                        <img src="img/heart.svg">
+                        <h3>Your risks are <span id="heart-risk"></span></h3>
 
                         <span id="heart-container">
-
-                            <h3>Your risks are <span id="heart-risk"></span></h3>
-                        <ul id="heart-disease" style="display: none;">
+                        <ul class="ul" id="heart-disease" style="display: none; ">
                             <h4>You might expect to see</h4>
-
-                            <li>Chest discomfort when you walk or exercise</li>
-                            <li>Chest pain along with tiredness (fatigue) or shortness of breath</li>
-                            <li>Your resting heart rate is usually faster than 100 beats per minute</li>
+                            <li class="li-shadow">Chest discomfort when you walk or exercise</li>
+                            <li class="li-shadow">Chest pain along with tiredness (fatigue) or shortness of breath</li>
+                            <li class="li-shadow">Your resting heart rate is usually faster than 100 beats per minute</li>
                         </ul>
-                        </span>
-                        
+                        </span>  
                     </span>
-
                 </li>
-                <li>
+                <li class="summary-content-li">
                     <span>
-                        <img src="img/foot.svg">
+                        <img src="img/foot.svg" style="width: 4vw;">
+                        <h3>Your risks are <span id="foot-risk"></span></h3>
+
                         <span id="foot-container">
-                            <h3>Your risks are <span id="foot-risk"></span></h3>
-                        <ul id="foot-disease" style="display: none;">
-                                                    <h4>You might expect to see</h4>
-
-                            <li>odors</li>
-                            <li>sores that heal slowly</li>
-                            <li>swelling</li>
+                        <ul class="ul" id="foot-disease" style="display: none;">
+                            <h4>You might expect to see</h4>
+                            <li class="li-shadow">odors</li>
+                            <li class="li-shadow">sores that heal slowly</li>
+                            <li class="li-shadow">swelling</li>
                         </ul>
                         </span>
-                        
-
                     </span>
-
-                </li><li>
+                </li>
+                <li class="summary-content-li">
                     <span>
-                        <img src="img/veins.svg">
+                        <img src="img/veins.svg" style="width: 3.5vw;">
+                        <h3>Your risks are <span id="veins-risk"></span></h3>
+
                         <span id="veins-container">
-                            <h3>Your risks are <span id="veins-risk"></span></h3>
-                        <ul id="vein-disease" style="display: none;">
+                        <ul class="ul" id="vein-disease" style="display: none;">
                             <h4>You might expect to see</h4>
-                            <li>more vericose veins</li>
-                            <li>significant swelling</li>
-                            <li>itching</li>
-                            <li>burning</li>
+                            <li class="li-shadow">more vericose veins</li>
+                            <li class="li-shadow">significant swelling</li>
+                            <li class="li-shadow">itching</li>
+                            <li class="li-shadow">burning</li>
                         </ul>
                         </span>
                         
                     </span>
 
-                </li><li>
+                </li>
+                <li class="summary-content-li">
                     <span>
-                        <img src="img/nerve.svg" style="width: 9%;">
+                        <img src="img/nerve.svg" style="width: 4vw;">
+                                                    <h3>Your risks are <span id="nerve-risk"></span></h3>
+
                         <span id="nerve-container">
-                            <h3>Your risks are <span id="nerve-risk"></span></h3>
-                        <ul id="nerve-disease" style="display: none;">
+                        <ul class="ul" id="nerve-disease" style="display: none;">
                             <h4>You might expect to see</h4>
-                            <li>tingling</li>
-                            <li>pain or increased sensitivity</li>
-                            <li>numbness or weakness</li>               
+                            <li class="li-shadow">tingling</li>
+                            <li class="li-shadow">pain or increased sensitivity</li>
+                            <li class="li-shadow">numbness or weakness</li>               
                         </ul>
                         </span>
                         
@@ -115,35 +101,33 @@
                     </span>
 
                 </li>
-                <li>
+                <li class="summary-content-li" style="height: 18.5vh;">
                     <span>
-                        <img src="img/kidney.svg">
+                        <img src="img/kidney.svg" style="width: 3vw;">
+                                                    <h3>Your risks are <span id="kidney-risk"></span></h3>
+
                         <span id="kidney-container">
-                            <h3>Your risks are <span id="kidney-risk"></span></h3>
-                        <ul id="kidney-disease" style="display: none;">
+                        <ul class="ul" id="kidney-disease" style="display: none;">
                             <h4>You might expect to see</h4>
 
-                            <li>foamy urine</li>
-                            <li>High blood pressure</li>
-                            <li>Ankle and leg swelling</li>
-                            <li>leg cramps</li>
-                            <li>multiple bathroom trips at night</li>
-                            <li>Morning sickness, nausea and vomiting</li>
-                            <li>Weakness, paleness and anemia</li>
-                            <li>Itching</li>
+                            <li class="li-shadow">foamy urine</li>
+                            <li class="li-shadow">Ankle and leg swelling</li>
+                            <li class="li-shadow">leg cramps</li>
+                            <li class="li-shadow">multiple bathroom trips at night</li>
+                            <li class="li-shadow">Weakness, paleness and anemia</li>
+                            <li class="li-shadow">Itching</li>
                         </ul>
                         </span>
-                        
-                        
                     </span>
                 </li>
-            
             </ul>
         </div>
+        <div id="radarChart" style="display: none;"></div>
         <div id="sketch"></div>
     </div>
+    </div>
+    
 
-    <div id="radarChart" style="display: none;"></div>
     <script src="graph.js"></script>
     <script src="comorbiditree.js"></script>
 </body>

@@ -257,10 +257,9 @@
 
     function setup() {
         //let bloodConversion = parseInt(sugar.value)*10;
-        var cnv = createCanvas(windowWidth/2, windowHeight);
+        var cnv = createCanvas(windowWidth/3, windowHeight);
         cnv.position(0, windowHeight);
         cnv.parent('sketch');
-
         // hide canvas until we have data
         select('#sketch').hide();
         button();
@@ -295,31 +294,22 @@
         }  
 
         rectMode(CENTER);
-        fill(26, 23, 60, 85);
+        fill(26, 23, 60,99.9);
         noStroke();
         rectMode(CENTER);
 
           //x ,y ,width, height
-        rect(windowWidth/4, windowHeight/4+200, windowWidth/4+50, windowHeight/2, 3);
+        rect(windowWidth/6, windowHeight/4+200, windowWidth/6+50, windowHeight/2, 3);
 
         fill(255);
         textAlign(CENTER);
 
         textSize(width/6);
-       text(sugar.value, windowWidth/4.1, windowHeight/2-100);
+       text(sugar.value, windowWidth/6.2, windowHeight/2-100);
         textSize(16);
-        text("mg/L", windowWidth/3.3, windowHeight/2-100);
+        text("mg/L", windowWidth/4.5, windowHeight/2-100);
 
-        text("out of 3.81 Liters total in your body", windowWidth/4, windowHeight/2-30);
-
-
-       // if (retrievedStorage = []) {
-       //      text(sugar.value, windowWidth/4, windowHeight/2-100);
-
-       // } else {
-
-       // }
-
+        text("out of 3.81 Liters total in your body", windowWidth/6, windowHeight/2-30);
     }
 
     function button() {
@@ -331,32 +321,16 @@
             //value in mg
             let bloodValue = sugar.value;
 
-            // //
-            // let newBloodValue; 
-
-
             for (let i = 0; i < bloodConversion; i++) {
-               // if (particles = []) {
                     particles.push(new glucose());
-
-                // } else {
-                //     if old < new
-                //         if new > old
-                // }
             }
-       //  fill(255);
-       //  textAlign(CENTER);
-       //  textSize(width/6);
-       // text(sugar.value, windowWidth/4, windowHeight/2-100);
-       // display on button press
         select('#sketch').show();
         })
     }
 
-    function redraw() {
-        //same as draw but it needs to use stored values
-
-    }
+function windowResized() {
+  resizeCanvas(windowWidth/3, windowHeight);
+}
 
     function storeValues(){
         // store to localStorage
