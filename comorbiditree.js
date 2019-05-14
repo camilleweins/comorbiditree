@@ -256,7 +256,7 @@ rangeSlider.disabled = true;
         textAlign(CENTER);
 
         textSize(width/6);
-       text(sugar.value, windowWidth/6.2, windowHeight/2-100);
+       text(sugar.value*10, windowWidth/6.2, windowHeight/2-100);
         textSize(16);
         text("mg/L", windowWidth/4.5, windowHeight/2-100);
 
